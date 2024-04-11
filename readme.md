@@ -1,6 +1,6 @@
 ## Description
 
-If you want to build this project [this ](https://www.youtube.com/playlist?list=PLektTyeQhBZeDIRp2g15SsK1GX2Ig8YVW)playlist might help you get started
+If you want to build this project [this](https://www.youtube.com/playlist?list=PLektTyeQhBZeDIRp2g15SsK1GX2Ig8YVW) playlist might help you get started
 
 ## Folder structure
 
