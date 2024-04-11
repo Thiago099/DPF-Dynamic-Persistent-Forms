@@ -1,0 +1,47 @@
+[b][size=5][center]DynamicPersistentForms[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] DynamicPersistentForms [color=#3E9CCA]hidden[/color]
+
+[color=#6A9955]; Creates a new form that is a copy of given base form, changes to that form will be persisted in the save game.[/color]
+Form function [color=#DDDDAA]Craete[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+[color=#6A9955]; Dispose a form that was created using the previous function.[/color]
+function [color=#DDDDAA]Dispose[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color] 
+
+[color=#6A9955];Tracks a form that was not created using this mod, all changes made to it will be persisted on the save game[/color]
+function [color=#DDDDAA]Track[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+[color=#6A9955];Un-tracks a form that was not created using this mod, all changes made to it will no longer be persisted on the save game[/color]
+function [color=#DDDDAA]UnTrack[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+
+[color=#6A9955]; Modify forms[/color]
+
+function [color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]Form item, MagicEffect effect, float magnitude, int area, int duration, float cost[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]CopyMagicEffects[color=#FEB519]([/color][/color]Form from, Form to[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]Form source, Form target[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+function [color=#DDDDAA]SetSpellTomeSpell[color=#FEB519]([/color][/color]Book target, Spell teaches[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+function [color=#DDDDAA]SetSpellAutoCalculate[color=#FEB519]([/color][/color]Spell spell, bool value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSpellCostOverride[color=#FEB519]([/color][/color]Spell spell, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSpellChargeTime[color=#FEB519]([/color][/color]Spell spell, float value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSpellCastDuration[color=#FEB519]([/color][/color]Spell spell, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSpellRange[color=#FEB519]([/color][/color]Spell spell, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSpellCastingPerk[color=#FEB519]([/color][/color]Spell spell, Perk value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+function [color=#DDDDAA]SetEnchantmentAutoCalculate[color=#FEB519]([/color][/color]Enchantment enchantment, bool value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetEnchantmentChargeOverride[color=#FEB519]([/color][/color]Enchantment enchantment, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetEnchantmentCostOverride[color=#FEB519]([/color][/color]Enchantment enchantment, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SeEnchantmentChargeTime[color=#FEB519]([/color][/color]Enchantment enchantment, float value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+
+function [color=#DDDDAA]SetAmmoDamage[color=#FEB519]([/color][/color]Ammo ammo, float damage[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetAmmoProjectile[color=#FEB519]([/color][/color]Ammo ammo, Projectile projectile[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+
+[color=#6A9955]; None = 0[/color]
+[color=#6A9955]; Petty = 1[/color]
+[color=#6A9955]; Lesser = 2[/color]
+[color=#6A9955]; Common = 3[/color]
+[color=#6A9955]; Greater = 4[/color]
+[color=#6A9955]; Grand = 5[/color]
+function [color=#DDDDAA]SetSoulGemCapacity[color=#FEB519]([/color][/color]SoulGem gem, int capacity[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]SetSoulGemCurrentSoul[color=#FEB519]([/color][/color]SoulGem gem, int capacity[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+function [color=#DDDDAA]LinkSoulGems[color=#FEB519]([/color][/color]SoulGem empty, SoulGem filled[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color][/spoiler]

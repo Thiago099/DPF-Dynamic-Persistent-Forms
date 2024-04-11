@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "yargs": "^17.7.2"
+  },
+  "scripts": {
+    "generate-tests":"node index.js -i ../Examples -o ./out/examples.txt",
+    "generate-interface":"node index.js -i ../PapyrusInterface -o out/papyrus-interface.txt",
+    "all": "npm run generate-tests && npm run generate-interface"
+  },
+  "type": "module"
+}

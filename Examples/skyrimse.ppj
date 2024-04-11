@@ -1,0 +1,24 @@
+<?xml version='1.0'?><!-- Game is either sse, tesv, or fo4 -->
+<PapyrusProject xmlns="PapyrusProject.xsd" 
+    Flags="TESV_Papyrus_Flags.flg" 
+    Game="sse" 
+    Output="Scripts" 
+    Optimize="false" 
+    Release="false" 
+    Final="false">
+    <Imports>
+        <Import>E:\Program Files\Steam\steamapps\common\Skyrim Special Edition\Data\Scripts\Source</Import>
+        <Import>E:\Program Files\Steam\steamapps\common\Skyrim Special Edition\Data\Source\Scripts</Import>
+    </Imports>
+    <Folders>
+        <Folder>.\Source\Scripts</Folder>
+    </Folders>
+    <!-- <PostBuildEvent Description="Copy to skyrim mods folder" UseInBuild="true">
+        <Command>
+            xcopy "./source" "E:\Program Files\Steam\steamapps\common\Skyrim Special Edition\Data" /y /e /q
+        </Command>
+        <Command>
+            xcopy "./scripts" "E:\Program Files\Steam\steamapps\common\Skyrim Special Edition\Data" /y /e /q
+        </Command>
+    </PostBuildEvent> -->
+</PapyrusProject>
