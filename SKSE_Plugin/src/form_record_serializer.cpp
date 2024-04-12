@@ -161,6 +161,12 @@ static bool RestoreModifiedItem(Serializer<T>* serializer, FormRecord* instance)
         return false;
     }
 
+    if (instance && !instance->reference) {
+        if (instance->actualForm) {
+            instance->actualForm->SetDelete(true);
+        }
+        instance->reference = true;
+    }
 
     if (!instance) {
         print("ref instance not found creating it");
@@ -196,10 +202,11 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
         return false;
     }
 
-    if (instance && instance->formType != baseForm->GetFormType()) {
-        if (instance->actualForm) {
+    if (instance && (instance->reference || instance->formType != baseForm->GetFormType())) {
+        if (instance->actualForm && !instance->reference) {
             instance->actualForm->SetDelete(true);
         }
+        instance->reference = false;
         print("instance is of incompatible type");
         auto factory = RE::IFormFactory::GetFormFactoryByType(baseForm->GetFormType());
         RE::TESForm* current = factory->Create();
