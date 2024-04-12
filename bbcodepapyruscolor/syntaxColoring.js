@@ -32,7 +32,7 @@ const patterns = [
         color: "#C486C1",
     },
     {
-        pattern:/(?<=\s|\^|\])(?:property|auto|global|native|extends|hidden)(?=\s|$|\[)/gi,
+        pattern:/(?<=\s|\^|\])(?:property|auto|global|native|extends|hidden|false|true)(?=\s|$|\[)/gi,
         color:"#3E9CCA"
     },
     {
