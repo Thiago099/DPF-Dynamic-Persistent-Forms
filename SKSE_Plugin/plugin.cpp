@@ -43,7 +43,6 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
                     if (formData.back()->actualForm) 
                     {
                         formData.back()->actualForm->SetDelete(true);
-                        formData.back()->actualForm->SetFormID(deleteFormId, false);
                     }
                 }
                 delete formData.back();

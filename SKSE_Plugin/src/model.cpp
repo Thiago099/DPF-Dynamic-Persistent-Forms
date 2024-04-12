@@ -2,7 +2,6 @@
 #include <unordered_set>
 std::vector<FormRecord*> formData;
 RE::FormID lastFormId = 0x7FF0800;  // last mod
-RE::FormID deleteFormId = 0x7FF0500;  // last mod
 
 
 void AddFormData(FormRecord* item) {

@@ -137,7 +137,6 @@ void Dispose(RE::StaticFunctionTag*, RE::TESForm* form) {
                 item->deleted = true;
                 if (item->actualForm) {
                     item->actualForm->SetDelete(true);
-                    item->actualForm->SetFormID(deleteFormId,false);
                 }
                 return false;
             }

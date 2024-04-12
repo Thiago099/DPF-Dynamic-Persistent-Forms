@@ -198,7 +198,6 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
 
     if (instance && instance->formType != baseForm->GetFormType()) {
         if (instance->actualForm) {
-            instance->actualForm->SetFormID(deleteFormId, false);
             instance->actualForm->SetDelete(true);
         }
         print("instance is of incompatible type");
