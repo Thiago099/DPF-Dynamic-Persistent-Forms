@@ -10,9 +10,9 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Weapon newStaff = DynamicPersistentForms.Craete(StatsSoruce) as Weapon
+    Weapon newStaff = DynamicPersistentForms.Create(StatsSoruce) as Weapon
     if(newStaff)
-        Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.Create(MyEnchantment) as Enchantment
         newStaff.SetName("My New Dynamic Staff")
         newStaff.SetGoldValue(1003)
         DynamicPersistentForms.ClearMagicEffects(newEnchantment)

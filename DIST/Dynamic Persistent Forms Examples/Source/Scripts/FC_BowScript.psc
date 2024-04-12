@@ -10,9 +10,9 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Weapon newWeapon = DynamicPersistentForms.Craete(StatsSoruce) as Weapon
+    Weapon newWeapon = DynamicPersistentForms.Create(StatsSoruce) as Weapon
     if(newWeapon)
-        Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.Create(MyEnchantment) as Enchantment
         newWeapon.SetName("My New Dynamic Bow")
         newWeapon.SetBaseDamage(100)
         newWeapon.SetSpeed(newWeapon.GetSpeed()*2.0)

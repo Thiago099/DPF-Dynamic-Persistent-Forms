@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\www\\skyrim\\DynamicPersistentForms\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\src\\papyrus.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SKSE_Plugin\\src\\papyrus.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\www\\skyrim\\DynamicPersistentForms\\PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\plugin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SKSE_Plugin\\plugin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -23,12 +31,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "papyrus.cpp",
+              "DocumentMoniker": "E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\src\\papyrus.cpp",
+              "RelativeDocumentMoniker": "SKSE_Plugin\\src\\papyrus.cpp",
+              "ToolTip": "E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\src\\papyrus.cpp",
+              "RelativeToolTip": "SKSE_Plugin\\src\\papyrus.cpp",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAD8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-12T18:38:15.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DynamicPersistentForms.psc",
+              "DocumentMoniker": "E:\\www\\skyrim\\DynamicPersistentForms\\PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc",
+              "RelativeDocumentMoniker": "PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc",
+              "ToolTip": "E:\\www\\skyrim\\DynamicPersistentForms\\PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc",
+              "RelativeToolTip": "PapyrusInterface\\Source\\Scripts\\DynamicPersistentForms.psc",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-12T18:38:08.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "plugin.cpp",
               "DocumentMoniker": "E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\plugin.cpp",
               "RelativeDocumentMoniker": "SKSE_Plugin\\plugin.cpp",
               "ToolTip": "E:\\www\\skyrim\\DynamicPersistentForms\\SKSE_Plugin\\plugin.cpp",
               "RelativeToolTip": "SKSE_Plugin\\plugin.cpp",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACIAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-09T13:15:16.101Z",
               "EditorCaption": ""

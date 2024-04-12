@@ -10,9 +10,9 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Armor newArmor = DynamicPersistentForms.Craete(StatsSoruce) as Armor
+    Armor newArmor = DynamicPersistentForms.Create(StatsSoruce) as Armor
     if(newArmor)
-        Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.Create(MyEnchantment) as Enchantment
         newArmor.SetName("My New Dynamic Armor")
         newArmor.SetArmorRating(100)
         newArmor.SetGoldValue(1003)

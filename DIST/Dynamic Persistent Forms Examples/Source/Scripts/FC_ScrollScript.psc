@@ -10,8 +10,8 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Scroll newScroll = DynamicPersistentForms.Craete(StatsSource) as Scroll
-    MagicEffect newEffect = DynamicPersistentForms.Craete(EffectBase) as MagicEffect
+    Scroll newScroll = DynamicPersistentForms.Create(StatsSource) as Scroll
+    MagicEffect newEffect = DynamicPersistentForms.Create(EffectBase) as MagicEffect
     if(newScroll && newEffect)
         newScroll.SetName("My New Dynamic Scroll")
         DynamicPersistentForms.ClearMagicEffects(newScroll)

@@ -1,7 +1,7 @@
 scriptName DynamicPersistentForms hidden
 
 ; Creates a new form that is a copy of given base form, changes to that form will be persisted in the save game.
-Form function Craete(Form item) global native
+Form function Create(Form item) global native
 ; Dispose a form that was created using the previous function.
 function Dispose(Form item) global native 
 

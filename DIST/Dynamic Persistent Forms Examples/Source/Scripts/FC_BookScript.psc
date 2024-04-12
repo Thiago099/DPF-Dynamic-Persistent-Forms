@@ -10,7 +10,7 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Book newBook = DynamicPersistentForms.Craete(StatsSource) as Book
+    Book newBook = DynamicPersistentForms.Create(StatsSource) as Book
     if(newBook)
         newBook.SetName("My New Dynamic Tome")
         DynamicPersistentForms.SetSpellTomeSpell(newBook, TeachesSpell)

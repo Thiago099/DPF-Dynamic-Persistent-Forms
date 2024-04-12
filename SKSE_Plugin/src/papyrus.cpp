@@ -3,7 +3,7 @@
 
 std::mutex papyrusMutex;
 
-RE::TESForm* Craete(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
+RE::TESForm* Create(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
     std::lock_guard<std::mutex> lock(papyrusMutex);
     try {
         if (!baseItem) {
@@ -391,7 +391,7 @@ static void LinkSoulGems(RE::StaticFunctionTag*, RE::TESSoulGem* empty, RE::TESS
 
 
 bool PapyrusFunctions(RE::BSScript::IVirtualMachine* vm) {
-    vm->RegisterFunction("Craete", "DynamicPersistentForms", Craete);
+    vm->RegisterFunction("Create", "DynamicPersistentForms", Create);
     vm->RegisterFunction("Dispose", "DynamicPersistentForms", Dispose);
     vm->RegisterFunction("Track", "DynamicPersistentForms", Track);
     vm->RegisterFunction("UnTrack", "DynamicPersistentForms", UnTrack);
@@ -414,10 +414,8 @@ bool PapyrusFunctions(RE::BSScript::IVirtualMachine* vm) {
     vm->RegisterFunction("SetEnchantmentCostOverride", "DynamicPersistentForms", SetEnchantmentCostOverride);
     vm->RegisterFunction("SeEnchantmentChargeTime", "DynamicPersistentForms", SeEnchantmentChargeTime);
 
-
     vm->RegisterFunction("SetAmmoDamage", "DynamicPersistentForms", SetAmmoDamage);
     vm->RegisterFunction("SetAmmoProjectile", "DynamicPersistentForms", SetAmmoProjectile);
-
 
     vm->RegisterFunction("SetSoulGemCapacity", "DynamicPersistentForms", SetSoulGemCapacity);
     vm->RegisterFunction("SetSoulGemCurrentSoul", "DynamicPersistentForms", SetSoulGemCurrentSoul);

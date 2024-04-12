@@ -9,8 +9,8 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    SoulGem newEmptySoulGem = DynamicPersistentForms.Craete(BaseEmptySoulGem) as SoulGem
-    SoulGem newFilledSoulGem = DynamicPersistentForms.Craete(BaseEmptySoulGem) as SoulGem
+    SoulGem newEmptySoulGem = DynamicPersistentForms.Create(BaseEmptySoulGem) as SoulGem
+    SoulGem newFilledSoulGem = DynamicPersistentForms.Create(BaseEmptySoulGem) as SoulGem
     if(newEmptySoulGem&&newFilledSoulGem)
         newEmptySoulGem.SetName("My New Dynamic Soul Gem")
         newEmptySoulGem.SetGoldValue(1003)

@@ -8,7 +8,7 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    MiscObject newMiscObject = DynamicPersistentForms.Craete(StatsSoruce) as MiscObject
+    MiscObject newMiscObject = DynamicPersistentForms.Create(StatsSoruce) as MiscObject
     if(newMiscObject)
         newMiscObject.SetName("My New Dynamic Misc Item")
         newMiscObject.SetGoldValue(1003)

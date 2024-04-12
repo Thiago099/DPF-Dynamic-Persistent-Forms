@@ -10,7 +10,7 @@ EndEvent
 
 Event OnUpdate()
 
-    Ammo newAmmo = DynamicPersistentForms.Craete(StatsSoruce) as Ammo
+    Ammo newAmmo = DynamicPersistentForms.Create(StatsSoruce) as Ammo
     if(newAmmo)
         newAmmo.SetName("My New Dynamic Ammo")
         DynamicPersistentForms.SetAmmoDamage(newAmmo, 100)

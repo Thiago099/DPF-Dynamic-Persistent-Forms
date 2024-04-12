@@ -10,8 +10,8 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Spell newSpell = DynamicPersistentForms.Craete(StatsSource) as Spell
-    MagicEffect newEffect = DynamicPersistentForms.Craete(EffectBase) as MagicEffect
+    Spell newSpell = DynamicPersistentForms.Create(StatsSource) as Spell
+    MagicEffect newEffect = DynamicPersistentForms.Create(EffectBase) as MagicEffect
     if(newSpell && newEffect)
         newSpell.SetName("My New Dynamic Spell")
         DynamicPersistentForms.SetSpellCostOverride(newSpell, 1000)

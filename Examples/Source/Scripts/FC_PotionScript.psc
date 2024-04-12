@@ -9,7 +9,7 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Potion newPotion = DynamicPersistentForms.Craete(StatsSource) as Potion
+    Potion newPotion = DynamicPersistentForms.Create(StatsSource) as Potion
     if(newPotion)
         newPotion.SetName("My New Dynamic Potion")
         DynamicPersistentForms.ClearMagicEffects(newPotion)

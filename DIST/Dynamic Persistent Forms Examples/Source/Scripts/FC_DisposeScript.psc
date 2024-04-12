@@ -10,7 +10,7 @@ EndEvent
 bool added = false
 Auto State Start
     Event OnUpdate()
-        newArmor = DynamicPersistentForms.Craete(StatsSoruce) as Armor
+        newArmor = DynamicPersistentForms.Create(StatsSoruce) as Armor
         if(newArmor)
             newArmor.SetName("this item will be deleted")
             Game.GetPlayer().AddItem(newArmor)
@@ -27,7 +27,7 @@ State Step
         if(!added && Game.GetPlayer().IsSneaking())
             Game.GetPlayer().RemoveItem(newArmor)
             added = true
-            newArmor = DynamicPersistentForms.Craete(StatsSoruce) as Armor
+            newArmor = DynamicPersistentForms.Create(StatsSoruce) as Armor
             newArmor.SetName("This item will take its place")
             Game.GetPlayer().AddItem(newArmor)
             UnregisterForUpdate()

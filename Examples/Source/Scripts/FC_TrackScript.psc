@@ -11,7 +11,7 @@ EndEvent
 
 Event OnUpdate()
     DynamicPersistentForms.Track(ModifyArmor)
-    Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
+    Enchantment newEnchantment = DynamicPersistentForms.Create(MyEnchantment) as Enchantment
     ModifyArmor.SetName("this is a base skyrim item, its changes will persist")
     ModifyArmor.SetArmorRating(100)
     ModifyArmor.SetGoldValue(1003)

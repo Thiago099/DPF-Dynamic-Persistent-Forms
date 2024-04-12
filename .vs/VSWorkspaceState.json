@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SKSE_Plugin"
+    "\\PapyrusInterface",
+    "\\PapyrusInterface\\Scripts",
+    "\\PapyrusInterface\\Source",
+    "\\PapyrusInterface\\Source\\Scripts",
+    "\\SKSE_Plugin",
+    "\\SKSE_Plugin\\src"
   ],
-  "SelectedNode": "\\SKSE_Plugin\\plugin.cpp",
+  "SelectedNode": "\\SKSE_Plugin\\src\\papyrus.cpp",
   "PreviewInSolutionExplorer": false
 }

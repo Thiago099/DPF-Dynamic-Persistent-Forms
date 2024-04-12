@@ -10,7 +10,7 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-    Ingredient newIngredient = DynamicPersistentForms.Craete(StatsSource) as Ingredient
+    Ingredient newIngredient = DynamicPersistentForms.Create(StatsSource) as Ingredient
     if(newIngredient)
         newIngredient.SetName("My New Dynamic Ingredient")
         DynamicPersistentForms.ClearMagicEffects(newIngredient)
