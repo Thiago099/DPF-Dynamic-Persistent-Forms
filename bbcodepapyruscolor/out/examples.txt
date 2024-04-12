@@ -107,7 +107,7 @@ Armor newArmor
     [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
 [color=#C486C1]EndEvent[/color]
 
-bool added = false
+bool added = [color=#3E9CCA]false[/color]
 [color=#3E9CCA]Auto[/color] [color=#C486C1]State[/color] Start
     [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
@@ -126,7 +126,7 @@ bool added = false
     [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
             Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]RemoveItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-            added = true
+            added = [color=#3E9CCA]true[/color]
             newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
             newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"This item will take its place"[/color][color=#FEB519])[/color]
             Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
@@ -343,7 +343,7 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
 Armor [color=#3E9CCA]Property[/color] ModifyArmor [color=#3E9CCA]Auto[/color]
 Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
-bool added = false
+bool added = [color=#3E9CCA]false[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
@@ -370,7 +370,7 @@ bool added = false
 [color=#C486C1]State[/color] Step
     [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
-            added = true
+            added = [color=#3E9CCA]true[/color]
             DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
             ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
             ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
