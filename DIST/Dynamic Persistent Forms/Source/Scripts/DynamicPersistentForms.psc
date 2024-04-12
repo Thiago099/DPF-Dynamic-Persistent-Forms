@@ -1,12 +1,14 @@
 scriptName DynamicPersistentForms hidden
 
-
+; Creates a new form that is a copy of given base form, changes to that form will be persisted in the save game.
 Form function Craete(Form item) global native
-function Dispose(Form item) global native ; New Forms Only
+; Dispose a form that was created using the previous function.
+function Dispose(Form item) global native 
 
-
-function Track(Form item) global native ; Non created forms only
-function UnTrack(Form item) global native ; Non created forms only
+;Tracks a form that was not created using this mod, all changes made to it will be persisted on the save game
+function Track(Form item) global native
+;Un-tracks a form that was not created using this mod, all changes made to it will no longer be persisted on the save game
+function UnTrack(Form item) global native
 
 
 ; Modify forms

@@ -5,6 +5,10 @@ SoulGem Property BaseFilledSoulGem Auto
 MiscObject Property AppearenceSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     SoulGem newEmptySoulGem = DynamicPersistentForms.Craete(BaseEmptySoulGem) as SoulGem
     SoulGem newFilledSoulGem = DynamicPersistentForms.Craete(BaseEmptySoulGem) as SoulGem
     if(newEmptySoulGem&&newFilledSoulGem)

@@ -170,7 +170,7 @@ static bool RestoreModifiedItem(Serializer<T>* serializer, FormRecord* instance)
 template <typename T>
 static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) {
     print("new form");
-    bool createdRecord;
+    bool createdRecord = false;
     auto baseForm = serializer->ReadFormRef();
     auto modelForm = serializer->ReadFormRef();
     auto id = serializer->Read<uint32_t>();

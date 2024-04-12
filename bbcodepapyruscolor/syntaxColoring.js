@@ -28,7 +28,7 @@ const patterns = [
     // specific
 
     {
-        pattern:/(?<=\s|^|\])(?:event|endevent|if|endif|while|endwhile)(?=\s|$|\[)/gi,
+        pattern:/(?<=\s|^|\])(?:event|endevent|if|endif|while|endwhile|state|endstate)(?=\s|$|\[)/gi,
         color: "#C486C1",
     },
     {

@@ -28,7 +28,7 @@
 SKSEPluginLoad(const SKSE::LoadInterface *skse) {
     SKSE::Init(skse);
 
-    //EnableLog("DynamicPersistentFormsLog.txt", "DPF 2.2");
+    EnableLog("DynamicPersistentFormsLog.txt", "DPF 2");
 
     SKSE::GetPapyrusInterface()->Register(PapyrusFunctions);
 

@@ -5,6 +5,11 @@ Ammo Property ModelSource Auto
 Projectile Property SetProjectile Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
+
     Ammo newAmmo = DynamicPersistentForms.Craete(StatsSoruce) as Ammo
     if(newAmmo)
         newAmmo.SetName("My New Dynamic Ammo")
@@ -14,5 +19,5 @@ Event OnInit()
         DynamicPersistentForms.CopyAppearance(ModelSource, newAmmo)
         Game.GetPlayer().AddItem(newAmmo,100)
     endif
-EndEvent
 
+endevent

@@ -6,6 +6,10 @@ Book Property ModelSource Auto
 Spell Property TeachesSpell Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Book newBook = DynamicPersistentForms.Craete(StatsSource) as Book
     if(newBook)
         newBook.SetName("My New Dynamic Tome")
@@ -16,4 +20,3 @@ Event OnInit()
         Game.GetPlayer().AddItem(ModelSource)
     endif
 EndEvent
-
