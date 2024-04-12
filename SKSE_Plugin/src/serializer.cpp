@@ -11,7 +11,7 @@ class StreamWrapper {
             stream.clear();
             stream.seekg(0);
         }
-        void SeekBeguinning() {
+        void SeekBeginning() {
             stream.seekg(0);
         }
         template <class T>
@@ -37,7 +37,7 @@ class StreamWrapper {
         void WriteDown(std::function<void(uint32_t)> const& start, std::function<void(char)> const& step) {
             auto size = Size();
             start(size);
-            SeekBeguinning();
+            SeekBeginning();
             for (size_t i = 0; i < size; i++) {
                 step(stream.get());
             }
@@ -49,7 +49,7 @@ class StreamWrapper {
             for (size_t i = 0; i < arrayLength; i++) {
                 stream.put(step());
             }
-            SeekBeguinning();
+            SeekBeginning();
         }
 };
 
