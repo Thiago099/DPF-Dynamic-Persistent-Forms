@@ -59,6 +59,7 @@ void Track(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
                 return false;
             }
             if (!item->reference && item->Match(baseItem)) {
+                found = true;
                 return false;
             }
             return true;
