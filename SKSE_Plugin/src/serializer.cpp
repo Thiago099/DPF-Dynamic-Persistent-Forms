@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-class IStream {
+class StreamWrapper {
     private:
     std::stringstream stream;
     public:
@@ -24,7 +24,7 @@ class IStream {
             if (stream.read(reinterpret_cast<char*>(&result), sizeof(T))) {
                 return result;
             }
-            return 0;
+            return T();
         }
         uint32_t Size() {
             std::streampos currentPosition = stream.tellg();
@@ -56,7 +56,7 @@ class IStream {
 template <typename Derived>
 class Serializer {
 private:
-    std::stack<IStream*> ctx;
+    std::stack<StreamWrapper*> ctx;
 
     template <class T>
     void WriteTarget(T value) {
@@ -96,7 +96,7 @@ public:
     }
 
     void StartWritingSection() {
-        ctx.push(new IStream());
+        ctx.push(new StreamWrapper());
     }
 
     void finishWritingSection() {
@@ -120,14 +120,14 @@ public:
     void startReadingSection() {
 
         if (ctx.size() == 0) {
-            ctx.push(new IStream());
+            ctx.push(new StreamWrapper());
             ctx.top()->ReadOut(
                 [&]() { return ReadSource<uint32_t>(); }, 
                 [&]() { return ReadSource<char>(); }
             );
         } else {
             auto parent = ctx.top();
-            ctx.push(new IStream());
+            ctx.push(new StreamWrapper());
             ctx.top()->ReadOut(
                 [&]() { return parent->Read<uint32_t>(); }, 
                 [&]() { return parent->Read<char>(); }
@@ -276,6 +276,6 @@ public:
         } else {
             print("Error: File not open for reading.");
         }
-        return 0;
+        return T();
     }
 };

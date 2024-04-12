@@ -57,7 +57,6 @@ void UnTrack(RE::StaticFunctionTag*, RE::TESForm* form) {
         EachFormData([&](FormRecord* item) {
             if (item->reference && item->Match(form)) {
                 item->deleted = true;
-                item->version = 0;
                 return false;
             }
             return true;
@@ -136,7 +135,6 @@ void Dispose(RE::StaticFunctionTag*, RE::TESForm* form) {
         EachFormData([&](FormRecord* item) {
             if (!item->reference && !item->deleted && item->Match(form)) {
                 item->deleted = true;
-                item->version = 0;
                 if (item->actualForm) {
                     item->actualForm->SetDelete(true);
                     item->actualForm->SetFormID(deleteFormId,false);
