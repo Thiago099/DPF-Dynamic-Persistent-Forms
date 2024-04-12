@@ -1,5 +1,4 @@
 #pragma once
-#include <objbase.h>
 class FormRecord {
     private:
      FormRecord() {
@@ -75,17 +74,9 @@ class FormRecord {
     RE::TESForm *modelForm = nullptr;
     bool deleted = false;
     bool reference = false;
-    GUID version;
     RE::FormType formType;
     RE::FormID formId;
 
-    void SetVersion(GUID _version) {
-        version = _version;
-    }
-
-    void NewVersion() { 
-        CoCreateGuid(&version);
-    }
 };
 
 

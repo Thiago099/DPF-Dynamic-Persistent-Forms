@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_set>
 std::vector<FormRecord*> formData;
-RE::FormID lastFormId = 0x7FF0800;  // last mod
+uint32_t lastFormId = 0x7FF0800;  // last mod
 
 
 void AddFormData(FormRecord* item) {
@@ -24,15 +24,9 @@ void EachFormData(std::function<bool(FormRecord*)> const& iteration) {
 
 
 void incrementLastFormID() {
-    std::uint32_t loadOrder = lastFormId & 0xFF000000;
-    std::uint32_t remainingDigits = lastFormId & 0x00FFFFFF;
-    std::uint32_t modifiedRemainingDigits = (remainingDigits + 1) % 0x01000000;
-    lastFormId = loadOrder | modifiedRemainingDigits;
+    ++lastFormId;
 }
 
-void resetId() {
-    lastFormId = 0x7FF0800;
-}
 
 void UpdateId() {
     EachFormData([&](FormRecord* item) {

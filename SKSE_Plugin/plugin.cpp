@@ -28,7 +28,7 @@
 SKSEPluginLoad(const SKSE::LoadInterface *skse) {
     SKSE::Init(skse);
 
-    //EnableLog("DynamicPersistentFormsLog.txt", "DPF 2.1");
+    //EnableLog("DynamicPersistentFormsLog.txt", "DPF 2.2");
 
     SKSE::GetPapyrusInterface()->Register(PapyrusFunctions);
 
@@ -40,7 +40,7 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
             std::filesystem::remove("DynamicPersistentFormsCache.bin");
             while (formData.size() > 0) {
                 if (formData.back() && formData.back()->reference == false) {
-                    if (formData.back()->actualForm) 
+                    if (formData.back()->actualForm)
                     {
                         formData.back()->actualForm->SetDelete(true);
                     }

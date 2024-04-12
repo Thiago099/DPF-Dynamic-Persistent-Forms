@@ -19,7 +19,7 @@ static void SaveCallback(SKSE::SerializationInterface* a_intfc) {
             print("Failed to open record for arr!");
         } else {
             auto serializer = new SaveDataSerializer(a_intfc);
-            StoreAllFormRecords(serializer, true);
+            StoreAllFormRecords(serializer);
         }
         SaveCache();
     } catch (const std::exception&) {
@@ -35,7 +35,6 @@ static void LoadCallback(SKSE::SerializationInterface* a_intfc) {
         uint32_t type;
         uint32_t version;
         uint32_t length;
-        resetId();
         bool refreshGame = false;
 
         while (a_intfc->GetNextRecordInfo(type, version, length)) {

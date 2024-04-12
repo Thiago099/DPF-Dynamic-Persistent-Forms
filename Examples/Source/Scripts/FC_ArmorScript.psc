@@ -6,6 +6,10 @@ Armor Property StatsSoruce Auto
 Armor Property ModelSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Armor newArmor = DynamicPersistentForms.Craete(StatsSoruce) as Armor
     if(newArmor)
         Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment

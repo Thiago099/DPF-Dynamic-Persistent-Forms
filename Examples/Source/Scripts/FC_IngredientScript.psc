@@ -6,6 +6,10 @@ Ingredient Property EffectSource Auto
 MagicEffect Property Effect Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Ingredient newIngredient = DynamicPersistentForms.Craete(StatsSource) as Ingredient
     if(newIngredient)
         newIngredient.SetName("My New Dynamic Ingredient")
@@ -18,4 +22,3 @@ Event OnInit()
         Game.GetPlayer().AddItem(EffectSource,5)
     endif
 EndEvent
-

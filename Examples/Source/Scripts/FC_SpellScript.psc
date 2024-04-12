@@ -6,6 +6,10 @@ Spell Property StatsSource Auto
 Spell Property ModelSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Spell newSpell = DynamicPersistentForms.Craete(StatsSource) as Spell
     MagicEffect newEffect = DynamicPersistentForms.Craete(EffectBase) as MagicEffect
     if(newSpell && newEffect)
@@ -23,4 +27,3 @@ Event OnInit()
         Game.GetPlayer().AddSpell(ModelSource)
     endif
 EndEvent
-

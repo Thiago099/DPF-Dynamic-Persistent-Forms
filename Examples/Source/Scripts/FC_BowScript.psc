@@ -6,6 +6,10 @@ Weapon Property ModelSource Auto
 Enchantment Property MyEnchantment Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Weapon newWeapon = DynamicPersistentForms.Craete(StatsSoruce) as Weapon
     if(newWeapon)
         Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
@@ -22,4 +26,3 @@ Event OnInit()
         Game.GetPlayer().AddItem(newWeapon)
     endif
 EndEvent
-

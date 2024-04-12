@@ -5,6 +5,11 @@ Ammo [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 Projectile [color=#3E9CCA]Property[/color] SetProjectile [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+
     Ammo newAmmo = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Ammo
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newAmmo[color=#FEB519])[/color]
         newAmmo.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Ammo"[/color][color=#FEB519])[/color]
@@ -14,9 +19,8 @@ Projectile [color=#3E9CCA]Property[/color] SetProjectile [color=#3E9CCA]Auto[/co
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newAmmo[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newAmmo,[color=#B5CF9A]100[/color][color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
 
-[/spoiler]
+[color=#C486C1]endevent[/color][/spoiler]
 [b][size=5][center]FC_ArmorScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_ArmorScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -25,6 +29,10 @@ Armor [color=#3E9CCA]Property[/color] StatsSoruce [color=#3E9CCA]Auto[/color]
 Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Armor newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
         Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
@@ -39,8 +47,7 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_BookScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_BookScript [color=#3E9CCA]extends[/color] Quest
 
 
@@ -49,6 +56,10 @@ Book [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 Spell [color=#3E9CCA]Property[/color] TeachesSpell [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Book newBook = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Book
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newBook[color=#FEB519])[/color]
         newBook.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Tome"[/color][color=#FEB519])[/color]
@@ -58,9 +69,7 @@ Spell [color=#3E9CCA]Property[/color] TeachesSpell [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_BowScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_BowScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -69,6 +78,10 @@ Weapon [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
         Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
@@ -84,35 +97,43 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newWeapon[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_DisposeScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_DisposeScript [color=#3E9CCA]extends[/color] Quest
 
 Armor [color=#3E9CCA]Property[/color] StatsSoruce [color=#3E9CCA]Auto[/color]
 Armor newArmor
+
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
-    [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-        newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"this item will be deleted"[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-        [color=#6A9955]; You must take care of removing the item from the inventory it is in, however it[/color]
-        [color=#6A9955]; will no longer be tracked by this mod[/color]
-        DynamicPersistentForms.[color=#DDDDAA]Dispose[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-    [color=#C486C1]endif[/color]
-    [color=#DDDDAA]RegisterForUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]0[/color].[color=#B5CF9A]1[/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
 [color=#C486C1]EndEvent[/color]
+
 bool added = false
-[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]RemoveItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-        added = true
+[color=#3E9CCA]Auto[/color] State Start
+    [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
-        newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"This item will take its place"[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-    [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+        [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"this item will be deleted"[/color][color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            [color=#6A9955]; You must take care of removing the item from the inventory it is in, however it[/color]
+            [color=#6A9955]; will no longer be tracked by this mod[/color]
+            DynamicPersistentForms.[color=#DDDDAA]Dispose[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+        [color=#C486C1]endif[/color]
+        [color=#DDDDAA]GotoState[color=#FEB519]([/color][/color][color=#CE723C]"Step"[/color][color=#FEB519])[/color]
+        [color=#DDDDAA]RegisterForUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]0[/color].[color=#B5CF9A]1[/color][color=#FEB519])[/color]
+    [color=#C486C1]EndEvent[/color]
+EndState
+State Step
+    [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+        [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]RemoveItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            added = true
+            newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
+            newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"This item will take its place"[/color][color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            [color=#DDDDAA]UnregisterForUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+        [color=#C486C1]endif[/color]
+    [color=#C486C1]EndEvent[/color]
+EndState[/spoiler]
 [b][size=5][center]FC_IngredientScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_IngredientScript [color=#3E9CCA]extends[/color] Quest
 
 Ingredient [color=#3E9CCA]Property[/color] StatsSource [color=#3E9CCA]Auto[/color]
@@ -121,6 +142,10 @@ Ingredient [color=#3E9CCA]Property[/color] EffectSource [color=#3E9CCA]Auto[/col
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Ingredient newIngredient = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Ingredient
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newIngredient[color=#FEB519])[/color]
         newIngredient.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Ingredient"[/color][color=#FEB519])[/color]
@@ -132,15 +157,17 @@ MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]EffectSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_MiscItemScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_MiscItemScript [color=#3E9CCA]extends[/color] Quest
 
 MiscObject [color=#3E9CCA]Property[/color] StatsSoruce [color=#3E9CCA]Auto[/color]
 MiscObject [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     MiscObject newMiscObject = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as MiscObject
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newMiscObject[color=#FEB519])[/color]
         newMiscObject.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Misc Item"[/color][color=#FEB519])[/color]
@@ -150,8 +177,7 @@ MiscObject [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/colo
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_PotionScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_PotionScript [color=#3E9CCA]extends[/color] Quest
 
 Potion [color=#3E9CCA]Property[/color] StatsSource [color=#3E9CCA]Auto[/color]
@@ -159,6 +185,10 @@ Potion [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Potion newPotion = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Potion
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newPotion[color=#FEB519])[/color]
         newPotion.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Potion"[/color][color=#FEB519])[/color]
@@ -169,9 +199,7 @@ MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_ScrollScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_ScrollScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] EffectModel [color=#3E9CCA]Auto[/color]
@@ -180,6 +208,10 @@ Scroll [color=#3E9CCA]Property[/color] StatsSource [color=#3E9CCA]Auto[/color]
 Scroll [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Scroll newScroll = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Scroll
     MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newScroll && newEffect[color=#FEB519])[/color]
@@ -192,9 +224,7 @@ Scroll [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_SoulGemScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_SoulGemScript [color=#3E9CCA]extends[/color] Quest
 
 SoulGem [color=#3E9CCA]Property[/color] BaseEmptySoulGem [color=#3E9CCA]Auto[/color]
@@ -202,6 +232,10 @@ SoulGem [color=#3E9CCA]Property[/color] BaseFilledSoulGem [color=#3E9CCA]Auto[/c
 MiscObject [color=#3E9CCA]Property[/color] AppearenceSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     SoulGem newEmptySoulGem = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
     SoulGem newFilledSoulGem = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newEmptySoulGem&&newFilledSoulGem[color=#FEB519])[/color]
@@ -221,8 +255,7 @@ MiscObject [color=#3E9CCA]Property[/color] AppearenceSource [color=#3E9CCA]Auto[
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newEmptySoulGem[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newFilledSoulGem[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_SpellScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_SpellScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] EffectModel [color=#3E9CCA]Auto[/color]
@@ -231,6 +264,10 @@ Spell [color=#3E9CCA]Property[/color] StatsSource [color=#3E9CCA]Auto[/color]
 Spell [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Spell newSpell = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Spell
     MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newSpell && newEffect[color=#FEB519])[/color]
@@ -247,9 +284,7 @@ Spell [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_StaffScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_StaffScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -258,6 +293,10 @@ Weapon [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Weapon newStaff = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newStaff[color=#FEB519])[/color]
         Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
@@ -272,9 +311,7 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_TrackScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_TrackScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -283,6 +320,10 @@ Armor [color=#3E9CCA]Property[/color] ModifyArmor [color=#3E9CCA]Auto[/color]
 Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
     Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
     ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"this is a base skyrim item, its changes will persist"[/color][color=#FEB519])[/color]
@@ -294,8 +335,7 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
     DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, ModifyArmor[color=#FEB519])[/color]
     Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
     Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_UnTrackScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_UnTrackScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -303,34 +343,43 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
 Armor [color=#3E9CCA]Property[/color] ModifyArmor [color=#3E9CCA]Auto[/color]
 Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
-[color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
-    ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[this items changes will not persist]"[/color][color=#FEB519])[/color]
-    ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
-    ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
-    DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
-    DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newEnchantment, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
-    ModifyArmor.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
-    DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, ModifyArmor[color=#FEB519])[/color]
-    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
-    DynamicPersistentForms.[color=#DDDDAA]UnTrack[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    [color=#DDDDAA]RegisterForUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]0[/color].[color=#B5CF9A]1[/color][color=#FEB519])[/color]
-[color=#C486C1]EndEvent[/color]
-[color=#6A9955]; Sneak to create a new form, it will take the place of the original form[/color]
 bool added = false
-[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
-        added = true
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#3E9CCA]Auto[/color] State Default
+    [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[this items changes will not persist]"[/color][color=#FEB519])[/color]
         ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
-        ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[Now it they will]"[/color][color=#FEB519])[/color]
+        DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
+        DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newEnchantment, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
+        ModifyArmor.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
+        DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, ModifyArmor[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-[/spoiler]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        DynamicPersistentForms.[color=#DDDDAA]UnTrack[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
+        [color=#DDDDAA]GotoState[color=#FEB519]([/color][/color][color=#CE723C]"Step"[/color][color=#FEB519])[/color]
+        [color=#DDDDAA]RegisterForUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]0[/color].[color=#B5CF9A]1[/color][color=#FEB519])[/color]
+    [color=#C486C1]EndEvent[/color]
+EndState
+State Step
+    [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+        [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
+            added = true
+            DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
+            ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
+            ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
+            ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[Now it they will]"[/color][color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
+            [color=#DDDDAA]UnregisterForUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+        [color=#C486C1]endif[/color]
+    [color=#C486C1]EndEvent[/color]
+EndState[/spoiler]
 [b][size=5][center]FC_WeaponScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_WeaponScript [color=#3E9CCA]extends[/color] Quest
 
 MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
@@ -339,6 +388,10 @@ Weapon [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
         Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
@@ -359,6 +412,4 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newWeapon[color=#FEB519])[/color]
         Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
-[color=#C486C1]EndEvent[/color]
-
-[/spoiler]
+[color=#C486C1]EndEvent[/color][/spoiler]

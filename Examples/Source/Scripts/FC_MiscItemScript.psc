@@ -4,6 +4,10 @@ MiscObject Property StatsSoruce Auto
 MiscObject Property ModelSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     MiscObject newMiscObject = DynamicPersistentForms.Craete(StatsSoruce) as MiscObject
     if(newMiscObject)
         newMiscObject.SetName("My New Dynamic Misc Item")

@@ -6,6 +6,10 @@ Armor Property ModifyArmor Auto
 Armor Property ModelSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     DynamicPersistentForms.Track(ModifyArmor)
     Enchantment newEnchantment = DynamicPersistentForms.Craete(MyEnchantment) as Enchantment
     ModifyArmor.SetName("this is a base skyrim item, its changes will persist")

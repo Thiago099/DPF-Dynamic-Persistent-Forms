@@ -6,6 +6,10 @@ Scroll Property StatsSource Auto
 Scroll Property ModelSource Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Scroll newScroll = DynamicPersistentForms.Craete(StatsSource) as Scroll
     MagicEffect newEffect = DynamicPersistentForms.Craete(EffectBase) as MagicEffect
     if(newScroll && newEffect)
@@ -19,4 +23,3 @@ Event OnInit()
         Game.GetPlayer().AddItem(ModelSource,5)
     endif
 EndEvent
-

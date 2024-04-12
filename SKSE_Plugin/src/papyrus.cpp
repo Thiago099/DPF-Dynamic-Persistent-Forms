@@ -5,12 +5,36 @@ std::mutex papyrusMutex;
 
 RE::TESForm* Craete(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
     std::lock_guard<std::mutex> lock(papyrusMutex);
-
     try {
         if (!baseItem) {
             return nullptr;
         }
+
+        if (baseItem->GetFormID() >= 0x7FF0800) {
+            print("item in treshold", baseItem->GetFormID());
+            bool found = false;
+            EachFormData([&](FormRecord* item) {
+                if (!item->reference && item->Match(baseItem)) {
+                    if (item->baseForm) {
+                        found = true;
+                        print("item replaced", baseItem->GetFormID());
+                        baseItem = item->baseForm;
+                    }
+                    return false;
+                }
+                return true;
+            });
+            if (!found) {
+                return nullptr;
+            }
+        }
+
         auto* newForm = AddForm(baseItem);
+
+        if (newForm) {
+            print("new form id", newForm->GetFormID());
+        }
+
         return newForm;
 
     } catch (const std::exception&) {

@@ -3,7 +3,7 @@
 #include "form.cpp"
 
 template <typename T>
-void StoreAllFormRecords(Serializer<T>* serializer, bool incrementVersion = false) {
+void StoreAllFormRecords(Serializer<T>* serializer) {
 
     size_t size = formData.size();
 
@@ -11,9 +11,6 @@ void StoreAllFormRecords(Serializer<T>* serializer, bool incrementVersion = fals
     print("write forms");
 
     EachFormData([&](FormRecord* instance) {
-        if (incrementVersion  && !instance->deleted) {
-            instance->NewVersion();
-        }
         StoreFormRecord(serializer, instance);
         return true;
     });
@@ -24,12 +21,6 @@ void StoreAllFormRecords(Serializer<T>* serializer, bool incrementVersion = fals
         return true;
     });
 
-    serializer->StartWritingSection();
-    EachFormData([&](FormRecord* elem) {
-        serializer->Write<GUID>(elem->version);
-        return true;
-    });
-    serializer->finishWritingSection();
 }
 template <typename T>
 bool RestoreAllFormRecords(Serializer<T>* serializer) {
@@ -52,14 +43,6 @@ bool RestoreAllFormRecords(Serializer<T>* serializer) {
         RestoreFormRecordData(serializer, instance);
     }
 
-    serializer->startReadingSection();
-    for (uint32_t i = 0; i < size; ++i) {
-        auto version = serializer->Read<GUID>();
-        if (formData[i]) {
-            formData[i]->version = version;
-        }
-    }
-    serializer->finishReadingSection();
 
     return formRecordCreated;
 }
@@ -74,7 +57,6 @@ static void StoreFormRecord(Serializer<T>* serializer, FormRecord* instance) {
     serializer->Write<char>(instance->deleted ? 1 : 0);
 
     if (!instance->deleted) {
-        serializer->Write<GUID>(instance->version);
         serializer->Write<char>(instance->reference ? 1 : 0);
         if (instance->reference) {
             serializer->WriteFormRef(instance->actualForm);
@@ -97,7 +79,6 @@ static void StoreFormRecordData(Serializer<T>* serializer, FormRecord* instance)
     serializer->StartWritingSection();
     serializer->Write<char>(instance->deleted ? 1 : 0);
     if (!instance->deleted) {
-        serializer->Write<GUID>(instance->version);
         StoreEachFormData(serializer, instance);
     }
     serializer->finishWritingSection();
@@ -107,7 +88,7 @@ static void StoreFormRecordData(Serializer<T>* serializer, FormRecord* instance)
 
 template <typename T>
 static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i) {
-
+    FormRecord* instance = nullptr;
     bool createdRecord = false;
     serializer->startReadingSection();
     auto deleted = serializer->Read<char>();
@@ -115,22 +96,20 @@ static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i) {
     if (deleted == 1) {
         auto formId = serializer->Read<uint32_t>();
         serializer->finishReadingSection();
-        auto instance = FormRecord::CreateDeleted(formId);
-        AddFormData(instance);
+        if (i < formData.size()) {
+            instance = formData[i];
+            instance->deleted = true;
+        } else {
+            auto instance = FormRecord::CreateDeleted(formId);
+            AddFormData(instance);
+        }
         return false;
     }
 
-    auto version = serializer->Read<GUID>();
     auto reference = serializer->Read<char>();
-    FormRecord* instance = nullptr;
 
     if (i < formData.size()) {
         instance = formData[i];
-        if (instance->version == version) {
-            serializer->finishReadingSection();
-            print("skipped already up to date");
-            return false;
-        }
     }
 
     if (reference == 1) {
@@ -180,7 +159,7 @@ static bool RestoreModifiedItem(Serializer<T>* serializer, FormRecord* instance)
         instance->modelForm = modelForm;
         createdRecord = true;
     }
-
+    instance->deleted = false;
     instance->actualForm = actualForm;
 
     applyPattern(instance);
@@ -202,7 +181,7 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
         return false;
     }
 
-    if (instance && (instance->reference || instance->formType != baseForm->GetFormType())) {
+    if (instance && (instance->reference || instance->formType != baseForm->GetFormType() || instance->deleted)) {
         if (instance->actualForm && !instance->reference) {
             instance->actualForm->SetDelete(true);
         }
@@ -226,6 +205,8 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
 
     instance->baseForm = baseForm;
     instance->modelForm = modelForm;
+    instance->formId = id;
+
 
     applyPattern(instance);
 
@@ -246,14 +227,13 @@ static void RestoreFormRecordData(Serializer<T>* serializer, FormRecord* instanc
         return;
     }
 
-    auto version = serializer->Read<GUID>();
-
-    if (version != instance->version) {
-        print("restoring");
-        RestoreEachFormData(serializer, instance);
-    } else {
-        print("skipped update, already up to date");
+    if (!instance->actualForm) {
+        print("missing actual form");
+        serializer->finishReadingSection();
+        return; 
     }
+
+    RestoreEachFormData(serializer, instance);
 
     serializer->finishReadingSection();
 }

@@ -5,6 +5,10 @@ Potion Property ModelSource Auto
 MagicEffect Property Effect Auto
 
 Event OnInit()
+    RegisterForSingleUpdate(2)
+EndEvent
+
+Event OnUpdate()
     Potion newPotion = DynamicPersistentForms.Craete(StatsSource) as Potion
     if(newPotion)
         newPotion.SetName("My New Dynamic Potion")
@@ -16,4 +20,3 @@ Event OnInit()
         Game.GetPlayer().AddItem(ModelSource,5)
     endif
 EndEvent
-
