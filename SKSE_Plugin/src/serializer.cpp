@@ -107,6 +107,7 @@ public:
                 [&](uint32_t size) { WriteTarget<uint32_t>(size); }, 
                 [&](char item) { WriteTarget<char>(item); }
             );
+            delete body;
         } else if (ctx.size() > 1) {
             auto body = ctx.top();
             ctx.pop();
@@ -114,6 +115,7 @@ public:
                 [&](uint32_t size) { ctx.top()->Write<uint32_t>(size); }, 
                 [&](char item) { ctx.top()->Write<char>(item); }
             );
+            delete body;
         }
     }
 
@@ -137,7 +139,9 @@ public:
 
     void finishReadingSection() {
         if (ctx.size() > 0) {
+            auto top = ctx.top();
             ctx.pop();
+            delete top;
         }
     }
     template<class T>
