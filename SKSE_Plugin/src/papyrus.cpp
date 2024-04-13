@@ -10,25 +10,6 @@ RE::TESForm* Create(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
             return nullptr;
         }
 
-        if (baseItem->GetFormID() >= 0x7FF0800) {
-            print("item in treshold", baseItem->GetFormID());
-            bool found = false;
-            EachFormData([&](FormRecord* item) {
-                if (!item->Match(baseItem)) {
-                    if (item->baseForm) {
-                        found = true;
-                        print("item replaced", baseItem->GetFormID());
-                        baseItem = item->baseForm;
-                    }
-                    return false;
-                }
-                return true;
-            });
-            if (!found) {
-                return nullptr;
-            }
-        }
-
         auto* newForm = AddForm(baseItem);
 
         if (newForm) {
