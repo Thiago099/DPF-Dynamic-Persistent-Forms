@@ -5,43 +5,73 @@
 template <typename T>
 void StoreAllFormRecords(Serializer<T>* serializer) {
 
-    size_t size = formData.size();
+    size_t sizeData = formData.size();
+    size_t sizeRef = formRef.size();
 
-    serializer->Write<uint32_t>(static_cast<uint32_t>(size));
+    serializer->Write<uint32_t>(static_cast<uint32_t>(sizeData));
+    serializer->Write<uint32_t>(static_cast<uint32_t>(sizeRef));
     print("write forms");
 
     EachFormData([&](FormRecord* instance) {
-        StoreFormRecord(serializer, instance);
+        StoreFormRecord(serializer, instance, false);
         return true;
     });
-    print("write data");
 
+    print("write data");
     EachFormData([&](FormRecord* elem) {
         StoreFormRecordData(serializer, elem);
         return true;
     });
+    print("write ref");
+    EachFormRef([&](FormRecord* instance) {
+        StoreFormRecord(serializer, instance, true);
+        return true;
+    });
+    print("write ref data");
 
+    EachFormRef([&](FormRecord* elem) {
+        StoreFormRecordData(serializer, elem);
+        return true;
+    });
 }
 template <typename T>
 bool RestoreAllFormRecords(Serializer<T>* serializer) {
 
     bool formRecordCreated = false;
 
-    uint32_t size = serializer->Read<uint32_t>();
-    printSize("number of items", size);
-    for (uint32_t i = 0; i < size; i++) {
+    uint32_t sizeData = serializer->Read<uint32_t>();
+    uint32_t sizeRef = serializer->Read<uint32_t>();
+    printSize("number of items", sizeData);
+
+    for (uint32_t i = 0; i < sizeData; i++) {
         print("form data", i);
-        if (RestoreFormRecord(serializer, i)) {
+        if (RestoreFormRecord(serializer, i, false)) {
             formRecordCreated = true;
         }
     }
     print("reading form data");
 
-    for (uint32_t i = 0; i < size; ++i) {
+    for (uint32_t i = 0; i < sizeData; ++i) {
         print("form data", i);
         auto instance = formData[i];
         RestoreFormRecordData(serializer, instance);
     }
+
+    printSize("number of items", sizeRef);
+    for (uint32_t i = 0; i < sizeRef; i++) {
+        print("form data", i);
+        if (RestoreFormRecord(serializer, i, true)) {
+            formRecordCreated = true;
+        }
+    }
+    print("reading form data");
+
+    for (uint32_t i = 0; i < sizeRef; ++i) {
+        print("form data", i);
+        auto instance = formRef[i];
+        RestoreFormRecordData(serializer, instance);
+    }
+
 
 
     return formRecordCreated;
@@ -50,15 +80,14 @@ bool RestoreAllFormRecords(Serializer<T>* serializer) {
 
 
 template <typename T>
-static void StoreFormRecord(Serializer<T>* serializer, FormRecord* instance) {
+static void StoreFormRecord(Serializer<T>* serializer, FormRecord* instance, bool reference) {
 
     serializer->StartWritingSection();
 
     serializer->Write<char>(instance->deleted ? 1 : 0);
 
     if (!instance->deleted) {
-        serializer->Write<char>(instance->reference ? 1 : 0);
-        if (instance->reference) {
+        if (reference) {
             serializer->WriteFormRef(instance->actualForm);
             serializer->WriteFormRef(instance->modelForm);
 
@@ -87,7 +116,7 @@ static void StoreFormRecordData(Serializer<T>* serializer, FormRecord* instance)
 
 
 template <typename T>
-static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i) {
+static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i, bool reference) {
     FormRecord* instance = nullptr;
     bool createdRecord = false;
     serializer->startReadingSection();
@@ -96,31 +125,38 @@ static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i) {
     if (deleted == 1) {
         auto formId = serializer->Read<uint32_t>();
         serializer->finishReadingSection();
-        if (i < formData.size()) {
-            instance = formData[i];
-            instance->deleted = true;
-        } else {
-            auto instance = FormRecord::CreateDeleted(formId);
-            AddFormData(instance);
+        if (reference) {
+            if (i < formRef.size()) {
+                instance = formRef[i];
+                instance->deleted = true;
+            } else {
+                auto instance = FormRecord::CreateDeleted(formId);
+                AddFormRef(instance);
+            }
+        } 
+        else
+        {
+            if (i < formData.size()) {
+                instance = formData[i];
+                instance->deleted = true;
+            } else {
+                auto instance = FormRecord::CreateDeleted(formId);
+                AddFormData(instance);
+            }
         }
         return false;
     }
 
-    auto reference = serializer->Read<char>();
-
-    if (i < formData.size()) {
-        instance = formData[i];
-    }
-
-    if (reference == 1) {
+    if (reference) {
+        if (i < formRef.size()) {
+            instance = formRef[i];
+        }
         createdRecord = RestoreModifiedItem(serializer, instance);
-    } else if (reference == 0) {
-        createdRecord = RestoreCreatedItem(serializer, instance);
     } else {
-        serializer->finishReadingSection();
-        print("this was an invalid key, something is broken");
-        printInt("last reference", reference);
-        return false;
+        if (i < formData.size()) {
+            instance = formData[i];
+        }
+        createdRecord = RestoreCreatedItem(serializer, instance);
     }
 
     return createdRecord;
@@ -140,25 +176,17 @@ static bool RestoreModifiedItem(Serializer<T>* serializer, FormRecord* instance)
         return false;
     }
 
-    if (instance && !instance->reference) {
-        if (instance->actualForm) {
-            instance->actualForm->SetDelete(true);
-        }
-        instance->reference = true;
-    }
 
     if (!instance) {
         print("ref instance not found creating it");
         instance = FormRecord::CreateReference(actualForm);
         instance->modelForm = modelForm;
-        AddFormData(instance);
+        AddFormRef(instance);
         createdRecord = true;
     }
 
-    if (instance->modelForm != modelForm) {
-        instance->modelForm = modelForm;
-        createdRecord = true;
-    }
+
+    instance->modelForm = modelForm;
     instance->deleted = false;
     instance->actualForm = actualForm;
 
@@ -181,11 +209,10 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
         return false;
     }
 
-    if (instance && (instance->reference || instance->formType != baseForm->GetFormType() || instance->deleted)) {
-        if (instance->actualForm && !instance->reference) {
+    if (instance && (instance->formType != baseForm->GetFormType() || instance->deleted)) {
+        if (instance->actualForm) {
             instance->actualForm->SetDelete(true);
         }
-        instance->reference = false;
         print("instance is of incompatible type");
         auto factory = RE::IFormFactory::GetFormFactoryByType(baseForm->GetFormType());
         RE::TESForm* current = factory->Create();

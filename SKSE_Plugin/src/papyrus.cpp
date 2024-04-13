@@ -14,7 +14,7 @@ RE::TESForm* Create(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
             print("item in treshold", baseItem->GetFormID());
             bool found = false;
             EachFormData([&](FormRecord* item) {
-                if (!item->reference && item->Match(baseItem)) {
+                if (!item->Match(baseItem)) {
                     if (item->baseForm) {
                         found = true;
                         print("item replaced", baseItem->GetFormID());
@@ -49,8 +49,8 @@ void Track(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
             return;
         }
         bool found = false;
-        EachFormData([&](FormRecord* item) {
-            if (item->reference && item->Match(baseItem)) {
+        EachFormRef([&](FormRecord* item) {
+            if (item->Match(baseItem)) {
                 print("reference reused");
                 if (item->deleted) {
                     item->UndeleteReference(baseItem);
@@ -58,14 +58,14 @@ void Track(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
                 found = true;
                 return false;
             }
-            if (!item->reference && item->Match(baseItem)) {
+            if (item->Match(baseItem)) {
                 found = true;
                 return false;
             }
             return true;
         });
         if (!found) {
-            AddFormData(FormRecord::CreateReference(baseItem));
+            AddFormRef(FormRecord::CreateReference(baseItem));
         }
 
     } catch (const std::exception&) {
@@ -79,8 +79,8 @@ void UnTrack(RE::StaticFunctionTag*, RE::TESForm* form) {
             return;
         }
 
-        EachFormData([&](FormRecord* item) {
-            if (item->reference && item->Match(form)) {
+        EachFormRef([&](FormRecord* item) {
+            if (item->Match(form)) {
                 item->deleted = true;
                 return false;
             }
@@ -158,7 +158,7 @@ void Dispose(RE::StaticFunctionTag*, RE::TESForm* form) {
         }
 
         EachFormData([&](FormRecord* item) {
-            if (!item->reference && !item->deleted && item->Match(form)) {
+            if (!item->deleted && item->Match(form)) {
                 item->deleted = true;
                 if (item->actualForm) {
                     item->actualForm->SetDelete(true);
@@ -211,6 +211,15 @@ static void CopyAppearance(RE::StaticFunctionTag*, RE::TESForm* source, RE::TESF
             }
             return true;
         });
+
+        EachFormRef([&](FormRecord* item) {
+            if (!item->deleted && item->Match(target)) {
+                item->modelForm = source;
+                return false;
+            }
+            return true;
+        });
+
 
         copyAppearence(source, target);
 

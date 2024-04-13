@@ -17,7 +17,6 @@ class FormRecord {
         auto result = new FormRecord(_actualForm);
         result->formType = formType;
         result->formId = formId;
-        result->reference = false;
         return result;
     }
     static FormRecord *CreateReference(RE::TESForm *_actualForm) {
@@ -26,7 +25,6 @@ class FormRecord {
         }
         auto result = new FormRecord(_actualForm);
         result->formId = _actualForm->GetFormID();
-        result->reference = true;
         return result;
     }
     static FormRecord *CreateDeleted(RE::FormID formId) {
@@ -42,7 +40,6 @@ class FormRecord {
         deleted = false;
         actualForm = _actualForm;
         formId = _actualForm->GetFormID();
-        reference = true;
         return;
     }
     void Undelete(RE::TESForm *_actualForm, RE::FormType _formType) {
@@ -52,7 +49,6 @@ class FormRecord {
         actualForm = _actualForm;
         formType = _formType;
         deleted = false;
-        reference = false;
     }
 
 
@@ -73,7 +69,6 @@ class FormRecord {
     RE::TESForm *actualForm = nullptr;
     RE::TESForm *modelForm = nullptr;
     bool deleted = false;
-    bool reference = false;
     RE::FormType formType;
     RE::FormID formId;
 

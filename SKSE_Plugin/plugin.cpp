@@ -38,8 +38,13 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
             print("loaded");
         } else if (message->type == SKSE::MessagingInterface::kNewGame) {
             std::filesystem::remove("DynamicPersistentFormsCache.bin");
+            while (formRef.size() > 0) {
+                delete formRef.back();
+                formRef.pop_back();
+            }
+
             while (formData.size() > 0) {
-                if (formData.back() && formData.back()->reference == false) {
+                if (formData.back()) {
                     if (formData.back()->actualForm)
                     {
                         formData.back()->actualForm->SetDelete(true);

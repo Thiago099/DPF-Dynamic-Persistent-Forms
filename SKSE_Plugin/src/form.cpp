@@ -16,7 +16,7 @@ static void applyPattern(FormRecord* instance);
 RE::TESForm* AddForm(RE::TESForm* baseItem) {
     RE::TESForm* result = nullptr;
     EachFormData([&](FormRecord* item) {
-        if (!item->reference && item->deleted) {
+        if (item->deleted) {
             print("item undeleted",item->formId);
             auto factory = RE::IFormFactory::GetFormFactoryByType(baseItem->GetFormType());
             result = factory->Create();
