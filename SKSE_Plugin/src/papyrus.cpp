@@ -326,7 +326,7 @@ static void SetEnchantmentCostOverride(RE::StaticFunctionTag*, RE::EnchantmentIt
     spell->data.flags |= RE::EnchantmentItem::EnchantmentFlag::kCostOverride;
     spell->data.costOverride = costOverride;
 }
-static void SeEnchantmentChargeTime(RE::StaticFunctionTag*, RE::EnchantmentItem* spell, float chargeTime) {
+static void SetEnchantmentChargeTime(RE::StaticFunctionTag*, RE::EnchantmentItem* spell, float chargeTime) {
     std::lock_guard<std::mutex> lock(papyrusMutex);
 
     if (!spell) {
@@ -412,7 +412,7 @@ bool PapyrusFunctions(RE::BSScript::IVirtualMachine* vm) {
     vm->RegisterFunction("SetEnchantmentAutoCalculate", "DynamicPersistentForms", SetEnchantmentAutoCalculate);
     vm->RegisterFunction("SetEnchantmentChargeOverride", "DynamicPersistentForms", SetEnchantmentChargeOverride);
     vm->RegisterFunction("SetEnchantmentCostOverride", "DynamicPersistentForms", SetEnchantmentCostOverride);
-    vm->RegisterFunction("SeEnchantmentChargeTime", "DynamicPersistentForms", SeEnchantmentChargeTime);
+    vm->RegisterFunction("SetEnchantmentChargeTime", "DynamicPersistentForms", SetEnchantmentChargeTime);
 
     vm->RegisterFunction("SetAmmoDamage", "DynamicPersistentForms", SetAmmoDamage);
     vm->RegisterFunction("SetAmmoProjectile", "DynamicPersistentForms", SetAmmoProjectile);

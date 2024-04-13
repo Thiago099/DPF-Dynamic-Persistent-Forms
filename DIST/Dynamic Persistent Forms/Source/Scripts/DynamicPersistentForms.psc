@@ -30,7 +30,7 @@ function SetSpellCastingPerk(Spell spell, Perk value) global native
 function SetEnchantmentAutoCalculate(Enchantment enchantment, bool value) global native
 function SetEnchantmentChargeOverride(Enchantment enchantment, int value) global native
 function SetEnchantmentCostOverride(Enchantment enchantment, int value) global native
-function SeEnchantmentChargeTime(Enchantment enchantment, float value) global native
+function SetEnchantmentChargeTime(Enchantment enchantment, float value) global native
 
 
 function SetAmmoDamage(Ammo ammo, float damage) global native
