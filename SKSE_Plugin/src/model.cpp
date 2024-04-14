@@ -2,7 +2,7 @@
 #include <unordered_set>
 std::vector<FormRecord*> formData;
 std::vector<FormRecord*> formRef;
-uint32_t lastFormId = 0x7FF0800;  // last mod
+uint32_t lastFormId = 0;  // last mod
 
 
 void AddFormData(FormRecord* item) {
@@ -18,8 +18,6 @@ void AddFormRef(FormRecord* item) {
     }
     formRef.push_back(item);
 }
-
-
 
 void EachFormData(std::function<bool(FormRecord*)> const& iteration) {
     for (auto item : formData) {

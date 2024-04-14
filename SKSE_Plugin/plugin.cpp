@@ -30,11 +30,21 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
 
     //EnableLog("DynamicPersistentFormsLog.txt", "DPF 2");
 
+
     SKSE::GetPapyrusInterface()->Register(PapyrusFunctions);
 
     SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message *message) {
         if (message->type == SKSE::MessagingInterface::kDataLoaded) {
+
+            
+            const auto dataHandler = RE::TESDataHandler::GetSingleton();
+
+            auto id = dataHandler->LookupFormID(0x800, "Dynamic Persistent Forms.esp");
+
+            lastFormId = id + 1;
+
             LoadCache();
+
             print("loaded");
         } else if (message->type == SKSE::MessagingInterface::kNewGame) {
             std::filesystem::remove("DynamicPersistentFormsCache.bin");
@@ -42,6 +52,7 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
                 delete formRef.back();
                 formRef.pop_back();
             }
+
 
             while (formData.size() > 0) {
                 if (formData.back()) {

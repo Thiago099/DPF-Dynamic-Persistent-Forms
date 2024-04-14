@@ -31,6 +31,9 @@ RE::TESForm* AddForm(RE::TESForm* baseItem) {
     if (result) {
         return result;
     }
+    if (lastFormId == 0) {
+        return nullptr;
+    }
     print("item created");
     auto factory = RE::IFormFactory::GetFormFactoryByType(baseItem->GetFormType());
     auto newForm = factory->Create();
