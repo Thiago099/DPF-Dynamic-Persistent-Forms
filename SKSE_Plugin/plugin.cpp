@@ -35,16 +35,8 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
 
     SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message *message) {
         if (message->type == SKSE::MessagingInterface::kDataLoaded) {
-
-            
-            const auto dataHandler = RE::TESDataHandler::GetSingleton();
-
-            auto id = dataHandler->LookupFormID(0x800, "Dynamic Persistent Forms.esp");
-
-            lastFormId = id + 1;
-
+            ReadFirstFormIdFromESP();
             LoadCache();
-
             print("loaded");
         } else if (message->type == SKSE::MessagingInterface::kNewGame) {
             std::filesystem::remove("DynamicPersistentFormsCache.bin");
@@ -52,8 +44,6 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
                 delete formRef.back();
                 formRef.pop_back();
             }
-
-
             while (formData.size() > 0) {
                 if (formData.back()) {
                     if (formData.back()->actualForm)
@@ -64,6 +54,7 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
                 delete formData.back();
                 formData.pop_back();
             }
+            ResetId();
             print("new game");
         }
     });

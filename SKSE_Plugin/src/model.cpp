@@ -3,6 +3,7 @@
 std::vector<FormRecord*> formData;
 std::vector<FormRecord*> formRef;
 uint32_t lastFormId = 0;  // last mod
+uint32_t firstFormId = 0;  // last mod
 
 
 void AddFormData(FormRecord* item) {
@@ -51,4 +52,18 @@ void UpdateId() {
         return true;
     });
     incrementLastFormID();
+}
+
+void ResetId() {
+    lastFormId = firstFormId;
+}
+
+void ReadFirstFormIdFromESP() {
+    const auto dataHandler = RE::TESDataHandler::GetSingleton();
+
+    auto id = dataHandler->LookupFormID(0x800, "Dynamic Persistent Forms.esp");
+
+    firstFormId = id + 1;
+
+    lastFormId = firstFormId;
 }
