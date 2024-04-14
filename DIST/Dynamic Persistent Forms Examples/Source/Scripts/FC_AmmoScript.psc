@@ -17,7 +17,7 @@ Event OnUpdate()
         DynamicPersistentForms.SetAmmoProjectile(newAmmo, SetProjectile)
         newAmmo.SetGoldValue(1003)
         DynamicPersistentForms.CopyAppearance(ModelSource, newAmmo)
-        Game.GetPlayer().AddItem(newAmmo,100)
+        Game.GetPlayer().AddItem(newAmmo,100,true)
     endif
 
 endevent

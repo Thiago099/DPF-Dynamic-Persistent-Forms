@@ -33,7 +33,7 @@ RE::TESForm* Create(RE::StaticFunctionTag*, RE::TESForm* baseItem) {
         auto* newForm = AddForm(baseItem);
 
         if (newForm) {
-            print("new form id", newForm->GetFormID());
+            printInt("new form id", newForm->GetFormID());
         }
 
         return newForm;
@@ -398,7 +398,6 @@ static void LinkSoulGems(RE::StaticFunctionTag*, RE::TESSoulGem* empty, RE::TESS
 
     empty->linkedSoulGem = filled;
 }
-
 
 bool PapyrusFunctions(RE::BSScript::IVirtualMachine* vm) {
     vm->RegisterFunction("Create", "DynamicPersistentForms", Create);

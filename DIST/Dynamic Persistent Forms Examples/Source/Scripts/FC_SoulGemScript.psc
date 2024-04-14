@@ -25,7 +25,7 @@ Event OnUpdate()
 
         DynamicPersistentForms.CopyAppearance(AppearenceSource, newEmptySoulGem)
         DynamicPersistentForms.CopyAppearance(AppearenceSource, newFilledSoulGem)
-        Game.GetPlayer().AddItem(newEmptySoulGem)
-        Game.GetPlayer().AddItem(newFilledSoulGem)
+        Game.GetPlayer().AddItem(newEmptySoulGem,1,true)
+        Game.GetPlayer().AddItem(newFilledSoulGem,1,true)
     endif
 EndEvent

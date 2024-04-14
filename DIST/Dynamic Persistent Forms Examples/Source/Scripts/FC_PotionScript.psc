@@ -15,8 +15,8 @@ Event OnUpdate()
         DynamicPersistentForms.ClearMagicEffects(newPotion)
         DynamicPersistentForms.AddMagicEffect(newPotion, Effect, 100, 100, 1, 0)
         DynamicPersistentForms.CopyAppearance(ModelSource, newPotion)
-        Game.GetPlayer().AddItem(newPotion,5)
-        Game.GetPlayer().AddItem(StatsSource,5)
-        Game.GetPlayer().AddItem(ModelSource,5)
+        Game.GetPlayer().AddItem(newPotion,5,true)
+        Game.GetPlayer().AddItem(StatsSource,5,true)
+        Game.GetPlayer().AddItem(ModelSource,5,true)
     endif
 EndEvent

@@ -10,14 +10,14 @@ Projectile [color=#3E9CCA]Property[/color] SetProjectile [color=#3E9CCA]Auto[/co
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
 
-    Ammo newAmmo = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Ammo
+    Ammo newAmmo = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Ammo
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newAmmo[color=#FEB519])[/color]
         newAmmo.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Ammo"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]SetAmmoDamage[color=#FEB519]([/color][/color]newAmmo, [color=#B5CF9A]100[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]SetAmmoProjectile[color=#FEB519]([/color][/color]newAmmo, SetProjectile[color=#FEB519])[/color]
         newAmmo.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newAmmo[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newAmmo,[color=#B5CF9A]100[/color][color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newAmmo,[color=#B5CF9A]100[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 
 [color=#C486C1]endevent[/color][/spoiler]
@@ -33,9 +33,9 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Armor newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
+    Armor newArmor = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
         newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Armor"[/color][color=#FEB519])[/color]
         newArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         newArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
@@ -43,9 +43,9 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
         DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newEnchantment, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
         newArmor.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newArmor[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_BookScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_BookScript [color=#3E9CCA]extends[/color] Quest
@@ -60,14 +60,14 @@ Spell [color=#3E9CCA]Property[/color] TeachesSpell [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Book newBook = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Book
+    Book newBook = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Book
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newBook[color=#FEB519])[/color]
         newBook.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Tome"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]SetSpellTomeSpell[color=#FEB519]([/color][/color]newBook, TeachesSpell[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newBook[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newBook[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newBook,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_BowScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_BowScript [color=#3E9CCA]extends[/color] Quest
@@ -82,9 +82,9 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
+    Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
-        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
         newWeapon.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Bow"[/color][color=#FEB519])[/color]
         newWeapon.[color=#DDDDAA]SetBaseDamage[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         newWeapon.[color=#DDDDAA]SetSpeed[color=#FEB519]([/color][/color]newWeapon.[color=#DDDDAA]GetSpeed[color=#FEB519]([/color][/color][color=#FEB519])[/color]*[color=#B5CF9A]2[/color].[color=#B5CF9A]0[/color][color=#FEB519])[/color]
@@ -95,7 +95,7 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         newWeapon.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
         newWeapon.[color=#DDDDAA]SetEnchantmentValue[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newWeapon[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_DisposeScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_DisposeScript [color=#3E9CCA]extends[/color] Quest
@@ -110,10 +110,10 @@ Armor newArmor
 bool added = [color=#3E9CCA]false[/color]
 [color=#3E9CCA]Auto[/color] [color=#C486C1]State[/color] Start
     [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-        newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
+        newArmor = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
         [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
             newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"this item will be deleted"[/color][color=#FEB519])[/color]
-            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
             [color=#6A9955]; You must take care of removing the item from the inventory it is in, however it[/color]
             [color=#6A9955]; will no longer be tracked by this mod[/color]
             DynamicPersistentForms.[color=#DDDDAA]Dispose[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
@@ -127,13 +127,33 @@ bool added = [color=#3E9CCA]false[/color]
         [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]!added && Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]IsSneaking[color=#FEB519]([/color][/color][color=#FEB519])[/color][color=#FEB519])[/color]
             Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]RemoveItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
             added = [color=#3E9CCA]true[/color]
-            newArmor = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
+            newArmor = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Armor
             newArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"This item will take its place"[/color][color=#FEB519])[/color]
-            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor[color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
             [color=#DDDDAA]UnregisterForUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         [color=#C486C1]endif[/color]
     [color=#C486C1]EndEvent[/color]
 [color=#C486C1]EndState[/color][/spoiler]
+[b][size=5][center]FC_FloraScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_FloraScript [color=#3E9CCA]extends[/color] Quest
+
+Flora [color=#3E9CCA]Property[/color] FloraSource [color=#3E9CCA]Auto[/color]
+LeveledItem [color=#3E9CCA]Property[/color] IngredientSource [color=#3E9CCA]Auto[/color]
+Ingredient [color=#3E9CCA]Property[/color] IngredientItem [color=#3E9CCA]Auto[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnInit[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    [color=#DDDDAA]RegisterForSingleUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]2[/color][color=#FEB519])[/color]
+[color=#C486C1]EndEvent[/color]
+
+[color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
+    Flora newFlora = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]FloraSource[color=#FEB519])[/color] as Flora
+    LeveledItem myLeveledItem = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]IngredientSource[color=#FEB519])[/color] as LeveledItem
+    [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newFlora && myLeveledItem[color=#FEB519])[/color]
+        myLeveledItem.[color=#DDDDAA]AddForm[color=#FEB519]([/color][/color]IngredientItem, [color=#B5CF9A]1[/color], [color=#B5CF9A]10[/color][color=#FEB519])[/color]
+        newFlora.[color=#DDDDAA]SetIngredient[color=#FEB519]([/color][/color]myLeveledItem[color=#FEB519])[/color]
+        newFlora.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Flora"[/color][color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]PlaceAtMe[color=#FEB519]([/color][/color]newFlora[color=#FEB519])[/color]
+    [color=#C486C1]endif[/color]
+[color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_IngredientScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_IngredientScript [color=#3E9CCA]extends[/color] Quest
 
 Ingredient [color=#3E9CCA]Property[/color] StatsSource [color=#3E9CCA]Auto[/color]
@@ -146,16 +166,16 @@ MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Ingredient newIngredient = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Ingredient
+    Ingredient newIngredient = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Ingredient
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newIngredient[color=#FEB519])[/color]
         newIngredient.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Ingredient"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newIngredient[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyMagicEffects[color=#FEB519]([/color][/color]EffectSource, newIngredient[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newIngredient[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newIngredient,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]EffectSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newIngredient,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]EffectSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_MiscItemScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_MiscItemScript [color=#3E9CCA]extends[/color] Quest
@@ -168,14 +188,14 @@ MiscObject [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/colo
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    MiscObject newMiscObject = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as MiscObject
+    MiscObject newMiscObject = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as MiscObject
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newMiscObject[color=#FEB519])[/color]
         newMiscObject.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Misc Item"[/color][color=#FEB519])[/color]
         newMiscObject.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newMiscObject[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newMiscObject[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newMiscObject,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_PotionScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_PotionScript [color=#3E9CCA]extends[/color] Quest
@@ -189,15 +209,15 @@ MagicEffect [color=#3E9CCA]Property[/color] Effect [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Potion newPotion = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Potion
+    Potion newPotion = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Potion
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newPotion[color=#FEB519])[/color]
         newPotion.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Potion"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newPotion[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newPotion, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newPotion[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newPotion,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newPotion,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_ScrollScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_ScrollScript [color=#3E9CCA]extends[/color] Quest
@@ -212,17 +232,17 @@ Scroll [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Scroll newScroll = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Scroll
-    MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
+    Scroll newScroll = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Scroll
+    MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newScroll && newEffect[color=#FEB519])[/color]
         newScroll.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Scroll"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newScroll[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newScroll, newEffect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newScroll[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]EffectModel, newEffect[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newScroll,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color][color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newScroll,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]5[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_SoulGemScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_SoulGemScript [color=#3E9CCA]extends[/color] Quest
@@ -236,8 +256,8 @@ MiscObject [color=#3E9CCA]Property[/color] AppearenceSource [color=#3E9CCA]Auto[
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    SoulGem newEmptySoulGem = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
-    SoulGem newFilledSoulGem = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
+    SoulGem newEmptySoulGem = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
+    SoulGem newFilledSoulGem = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]BaseEmptySoulGem[color=#FEB519])[/color] as SoulGem
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newEmptySoulGem&&newFilledSoulGem[color=#FEB519])[/color]
         newEmptySoulGem.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Soul Gem"[/color][color=#FEB519])[/color]
         newEmptySoulGem.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
@@ -252,8 +272,8 @@ MiscObject [color=#3E9CCA]Property[/color] AppearenceSource [color=#3E9CCA]Auto[
 
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]AppearenceSource, newEmptySoulGem[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]AppearenceSource, newFilledSoulGem[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newEmptySoulGem[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newFilledSoulGem[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newEmptySoulGem,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newFilledSoulGem,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_SpellScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_SpellScript [color=#3E9CCA]extends[/color] Quest
@@ -268,8 +288,8 @@ Spell [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Spell newSpell = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Spell
-    MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
+    Spell newSpell = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color] as Spell
+    MagicEffect newEffect = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]EffectBase[color=#FEB519])[/color] as MagicEffect
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newSpell && newEffect[color=#FEB519])[/color]
         newSpell.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Spell"[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]SetSpellCostOverride[color=#FEB519]([/color][/color]newSpell, [color=#B5CF9A]1000[/color][color=#FEB519])[/color]
@@ -280,9 +300,9 @@ Spell [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
         DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newSpell, newEffect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]100[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newSpell[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]EffectModel, newEffect[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]newSpell[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]StatsSource[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]newSpell,false[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]StatsSource,false[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddSpell[color=#FEB519]([/color][/color]ModelSource,false[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_StaffScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_StaffScript [color=#3E9CCA]extends[/color] Quest
@@ -297,9 +317,9 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Weapon newStaff = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
+    Weapon newStaff = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newStaff[color=#FEB519])[/color]
-        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
         newStaff.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Staff"[/color][color=#FEB519])[/color]
         newStaff.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]ClearMagicEffects[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
@@ -307,9 +327,9 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         newStaff.[color=#DDDDAA]SetEnchantmentValue[color=#FEB519]([/color][/color][color=#B5CF9A]1000[/color][color=#FEB519])[/color]
         newStaff.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newStaff[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newStaff[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newStaff,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]StatsSoruce,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_TrackScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_TrackScript [color=#3E9CCA]extends[/color] Quest
@@ -325,7 +345,7 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
     DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+    Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
     ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"this is a base skyrim item, its changes will persist"[/color][color=#FEB519])[/color]
     ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
     ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
@@ -333,8 +353,8 @@ Armor [color=#3E9CCA]Property[/color] ModelSource [color=#3E9CCA]Auto[/color]
     DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newEnchantment, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
     ModifyArmor.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
     DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, ModifyArmor[color=#FEB519])[/color]
-    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+    Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]
 [b][size=5][center]FC_UnTrackScript[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] FC_UnTrackScript [color=#3E9CCA]extends[/color] Quest
 
@@ -352,7 +372,7 @@ bool added = [color=#3E9CCA]false[/color]
 [color=#3E9CCA]Auto[/color] [color=#C486C1]State[/color] Default
     [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]Track[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
         ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[this items changes will not persist]"[/color][color=#FEB519])[/color]
         ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
@@ -360,8 +380,8 @@ bool added = [color=#3E9CCA]false[/color]
         DynamicPersistentForms.[color=#DDDDAA]AddMagicEffect[color=#FEB519]([/color][/color]newEnchantment, Effect, [color=#B5CF9A]100[/color], [color=#B5CF9A]100[/color], [color=#B5CF9A]1[/color], [color=#B5CF9A]0[/color][color=#FEB519])[/color]
         ModifyArmor.[color=#DDDDAA]SetEnchantment[color=#FEB519]([/color][/color]newEnchantment[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, ModifyArmor[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModelSource,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
         DynamicPersistentForms.[color=#DDDDAA]UnTrack[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
         [color=#DDDDAA]GotoState[color=#FEB519]([/color][/color][color=#CE723C]"Step"[/color][color=#FEB519])[/color]
         [color=#DDDDAA]RegisterForUpdate[color=#FEB519]([/color][/color][color=#B5CF9A]0[/color].[color=#B5CF9A]1[/color][color=#FEB519])[/color]
@@ -375,7 +395,7 @@ bool added = [color=#3E9CCA]false[/color]
             ModifyArmor.[color=#DDDDAA]SetArmorRating[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
             ModifyArmor.[color=#DDDDAA]SetGoldValue[color=#FEB519]([/color][/color][color=#B5CF9A]1003[/color][color=#FEB519])[/color]
             ModifyArmor.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"[Now it they will]"[/color][color=#FEB519])[/color]
-            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor[color=#FEB519])[/color]
+            Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]ModifyArmor,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
             [color=#DDDDAA]UnregisterForUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
         [color=#C486C1]endif[/color]
     [color=#C486C1]EndEvent[/color]
@@ -392,9 +412,9 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
 [color=#C486C1]EndEvent[/color]
 
 [color=#C486C1]Event[/color] [color=#DDDDAA]OnUpdate[color=#FEB519]([/color][/color][color=#FEB519])[/color]
-    Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
+    Weapon newWeapon = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]StatsSoruce[color=#FEB519])[/color] as Weapon
     [color=#DDDDAA][color=#C486C1]if[/color][color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
-        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Craete[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
+        Enchantment newEnchantment = DynamicPersistentForms.[color=#DDDDAA]Create[color=#FEB519]([/color][/color]MyEnchantment[color=#FEB519])[/color] as Enchantment
         newWeapon.[color=#DDDDAA]SetName[color=#FEB519]([/color][/color][color=#CE723C]"My New Dynamic Weapon"[/color][color=#FEB519])[/color]
         newWeapon.[color=#DDDDAA]SetBaseDamage[color=#FEB519]([/color][/color][color=#B5CF9A]100[/color][color=#FEB519])[/color]
         newWeapon.[color=#DDDDAA]SetSpeed[color=#FEB519]([/color][/color]newWeapon.[color=#DDDDAA]GetSpeed[color=#FEB519]([/color][/color][color=#FEB519])[/color]*[color=#B5CF9A]2[/color].[color=#B5CF9A]0[/color][color=#FEB519])[/color]
@@ -410,6 +430,6 @@ Enchantment [color=#3E9CCA]Property[/color] MyEnchantment [color=#3E9CCA]Auto[/c
         DynamicPersistentForms.[color=#DDDDAA]SetEnchantmentCostOverride[color=#FEB519]([/color][/color]newEnchantment, [color=#B5CF9A]3[/color][color=#FEB519])[/color]
         [color=#6A9955]; DynamicPersistentForms.SetEnchantmentAutoCalculate(newEnchantment, true); Set to true to disable override[/color]
         DynamicPersistentForms.[color=#DDDDAA]CopyAppearance[color=#FEB519]([/color][/color]ModelSource, newWeapon[color=#FEB519])[/color]
-        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon[color=#FEB519])[/color]
+        Game.[color=#DDDDAA]GetPlayer[color=#FEB519]([/color][/color][color=#FEB519])[/color].[color=#DDDDAA]AddItem[color=#FEB519]([/color][/color]newWeapon,[color=#B5CF9A]1[/color],true[color=#FEB519])[/color]
     [color=#C486C1]endif[/color]
 [color=#C486C1]EndEvent[/color][/spoiler]

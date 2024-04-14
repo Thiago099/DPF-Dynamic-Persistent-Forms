@@ -23,6 +23,6 @@ Event OnUpdate()
         newWeapon.SetEnchantment(newEnchantment)
         newWeapon.SetEnchantmentValue(100)
         DynamicPersistentForms.CopyAppearance(ModelSource, newWeapon)
-        Game.GetPlayer().AddItem(newWeapon)
+        Game.GetPlayer().AddItem(newWeapon,1,true)
     endif
 EndEvent

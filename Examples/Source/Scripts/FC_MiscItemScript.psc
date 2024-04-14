@@ -13,8 +13,8 @@ Event OnUpdate()
         newMiscObject.SetName("My New Dynamic Misc Item")
         newMiscObject.SetGoldValue(1003)
         DynamicPersistentForms.CopyAppearance(ModelSource, newMiscObject)
-        Game.GetPlayer().AddItem(newMiscObject)
-        Game.GetPlayer().AddItem(StatsSoruce)
-        Game.GetPlayer().AddItem(ModelSource)
+        Game.GetPlayer().AddItem(newMiscObject,1,true)
+        Game.GetPlayer().AddItem(StatsSoruce,1,true)
+        Game.GetPlayer().AddItem(ModelSource,1,true)
     endif
 EndEvent

@@ -22,8 +22,8 @@ Event OnUpdate()
         DynamicPersistentForms.AddMagicEffect(newSpell, newEffect, 100, 100, 1, 100)
         DynamicPersistentForms.CopyAppearance(ModelSource, newSpell)
         DynamicPersistentForms.CopyAppearance(EffectModel, newEffect)
-        Game.GetPlayer().AddSpell(newSpell)
-        Game.GetPlayer().AddSpell(StatsSource)
-        Game.GetPlayer().AddSpell(ModelSource)
+        Game.GetPlayer().AddSpell(newSpell,false)
+        Game.GetPlayer().AddSpell(StatsSource,false)
+        Game.GetPlayer().AddSpell(ModelSource,false)
     endif
 EndEvent

@@ -4,7 +4,7 @@
 
 static void copyFormArmorModel(RE::TESForm* source, RE::TESForm* target);
 static void copyFormObjectWeaponModel(RE::TESForm* source, RE::TESForm* target);
-void copyMagicEffect(RE::TESForm* source, RE::TESForm* target);
+static void copyMagicEffect(RE::TESForm* source, RE::TESForm* target);
 static void copyBookAppearence(RE::TESForm* source, RE::TESForm* target);
 static void applyPattern(FormRecord* instance);
 template <class T>
@@ -17,7 +17,7 @@ RE::TESForm* AddForm(RE::TESForm* baseItem) {
     RE::TESForm* result = nullptr;
     EachFormData([&](FormRecord* item) {
         if (item->deleted) {
-            print("item undeleted",item->formId);
+            printInt("item undeleted", item->formId);
             auto factory = RE::IFormFactory::GetFormFactoryByType(baseItem->GetFormType());
             result = factory->Create();
             result->SetFormID(item->formId, false);

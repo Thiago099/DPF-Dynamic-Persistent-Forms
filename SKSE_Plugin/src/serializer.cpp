@@ -39,7 +39,7 @@ class StreamWrapper {
             start(size);
             SeekBeginning();
             for (size_t i = 0; i < size; i++) {
-                step(stream.get());
+                step(static_cast<char>(stream.get()));
             }
             Clear();
         }
@@ -236,8 +236,7 @@ public:
 
     template <class T>
     T ReadImplementation() {
-        T value;
-        return value;
+        return T();
     }
 
     template <class T>

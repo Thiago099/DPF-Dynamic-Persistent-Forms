@@ -3,7 +3,8 @@
 #include "form.cpp"
 #include "serializer.cpp"
 #include "form_serializer.cpp"
-#include "form_record_serializer.cpp";
+#include "form_record_serializer.cpp"
+
 std::mutex callbackMutext;
 
 void LoadCache();

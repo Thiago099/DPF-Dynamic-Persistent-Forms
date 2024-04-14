@@ -9,6 +9,7 @@ public:
     virtual void Serialize(Serializer<T>*, RE::TESForm*) = 0;
     virtual void Deserialize(Serializer<T>*, RE::TESForm*) = 0;
     virtual bool Condition(RE::TESForm*) = false;
+    virtual ~FormSerializer() = default;
 };
 
 template <typename T>
@@ -341,6 +342,79 @@ public:
     bool Condition(RE::TESForm* form) override { return form->As<RE::TESObjectBOOK>(); }
 };
 
+template <typename T>
+class LeveledItemSerializer : public FormSerializer<T> {
+public:
+    void Serialize(Serializer<T>* serializer, RE::TESForm* form) override {
+        auto leveledList = form->As<RE::TESLeveledList>(); 
+        if (leveledList) {
+            serializer->Write<int8_t>(leveledList->chanceNone);
+            serializer->Write<uint8_t>(leveledList->numEntries);
+            //serializer->Write<uint8_t>(static_cast<uint8_t>(leveledList->llFlags));
+            serializer->WriteFormRef(leveledList->chanceGlobal);
+            auto size = static_cast<uint32_t>(leveledList->entries.size());
+            serializer->Write<uint32_t>(size);
+            for (auto item : leveledList->entries) {
+                serializer->Write<uint16_t>(item.count);
+                serializer->Write<uint16_t>(item.level);
+                serializer->WriteFormRef(item.form);
+            }
+        }
+    }
+    void Deserialize(Serializer<T>* serializer, RE::TESForm* form) override {
+        auto leveledList = form->As<RE::TESLeveledList>();
+        if (leveledList) {
+            leveledList->chanceNone = serializer->Read<int8_t>();
+            leveledList->numEntries = serializer->Read<uint8_t>();
+            //leveledList->llFlags = static_cast<RE::TESLeveledList::Flag>(serializer->Read<uint8_t>());
+            auto global = serializer->ReadFormRef<RE::TESGlobal>();
+            if (global){
+                leveledList->chanceGlobal = global;
+            }
+            auto size = serializer->Read<uint32_t>();
+            leveledList->entries.resize(static_cast<size_t>(size));
+            for (uint32_t i = 0; i < size; ++i) {
+                leveledList->entries[i] = RE::LEVELED_OBJECT();
+                auto count = serializer->Read<uint16_t>();
+                auto level = serializer->Read<uint16_t>();
+                auto newForm = serializer->ReadFormRef();
+                if (form) {
+                    leveledList->entries[i].count = count;
+                    leveledList->entries[i].level = level;
+                    leveledList->entries[i].form = newForm;
+                }
+            }
+        }
+
+    }
+    bool Condition(RE::TESForm* form) override { return form->As<RE::TESLeveledList>(); }
+};
+
+template <typename T>
+class ProduceFormSerializer : public FormSerializer<T> {
+public:
+    void Serialize(Serializer<T>* serializer, RE::TESForm* form) override {
+        auto produceForm = form->As<RE::TESProduceForm>(); 
+        if (produceForm) {
+            serializer->WriteFormRef(produceForm->harvestSound);
+            serializer->WriteFormRef(produceForm->produceItem);
+        }
+    }
+    void Deserialize(Serializer<T>* serializer, RE::TESForm* form) override {
+        auto produceForm = form->As<RE::TESProduceForm>();
+        if (produceForm) {
+            auto sound = serializer->ReadFormRef<RE::BGSSoundDescriptorForm>();
+            auto item = serializer->ReadFormRef<RE::TESBoundObject>();
+            if (sound) {
+                produceForm->harvestSound = sound;
+            }
+            if (item) {
+                produceForm->produceItem = item;
+            }
+        }
+    }
+    bool Condition(RE::TESForm* form) override { return form->As<RE::TESProduceForm>(); }
+};
 
 #define GetFilters() \
     filters.push_back(std::make_unique <NameSerializer<T>>());\
@@ -354,7 +428,9 @@ public:
     filters.push_back(std::make_unique<SpellSerializer<T>>());\
     filters.push_back(std::make_unique<EnchantmentSerializer<T>>()); \
     filters.push_back(std::make_unique<AmmoSerializer<T>>());\
-    filters.push_back(std::make_unique<SoulGemSerializer<T>>());
+    filters.push_back(std::make_unique<SoulGemSerializer<T>>());\
+    filters.push_back(std::make_unique<LeveledItemSerializer<T>>());\
+    filters.push_back(std::make_unique<ProduceFormSerializer<T>>());
 
 
 template <typename T>

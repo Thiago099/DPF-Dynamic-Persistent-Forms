@@ -22,8 +22,8 @@ Auto State Default
         DynamicPersistentForms.AddMagicEffect(newEnchantment, Effect, 100, 100, 1, 0)
         ModifyArmor.SetEnchantment(newEnchantment)
         DynamicPersistentForms.CopyAppearance(ModelSource, ModifyArmor)
-        Game.GetPlayer().AddItem(ModifyArmor)
-        Game.GetPlayer().AddItem(ModelSource)
+        Game.GetPlayer().AddItem(ModifyArmor,1,true)
+        Game.GetPlayer().AddItem(ModelSource,1,true)
         DynamicPersistentForms.UnTrack(ModifyArmor)
         GotoState("Step")
         RegisterForUpdate(0.1)
@@ -37,7 +37,7 @@ State Step
             ModifyArmor.SetArmorRating(100)
             ModifyArmor.SetGoldValue(1003)
             ModifyArmor.SetName("[Now it they will]")
-            Game.GetPlayer().AddItem(ModifyArmor)
+            Game.GetPlayer().AddItem(ModifyArmor,1,true)
             UnregisterForUpdate()
         endif
     EndEvent

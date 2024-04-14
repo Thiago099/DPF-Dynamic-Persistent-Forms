@@ -20,8 +20,8 @@ Event OnUpdate()
         newStaff.SetEnchantmentValue(1000)
         newStaff.SetEnchantment(newEnchantment)
         DynamicPersistentForms.CopyAppearance(ModelSource, newStaff)
-        Game.GetPlayer().AddItem(newStaff)
-        Game.GetPlayer().AddItem(StatsSoruce)
-        Game.GetPlayer().AddItem(ModelSource)
+        Game.GetPlayer().AddItem(newStaff,1,true)
+        Game.GetPlayer().AddItem(StatsSoruce,1,true)
+        Game.GetPlayer().AddItem(ModelSource,1,true)
     endif
 EndEvent

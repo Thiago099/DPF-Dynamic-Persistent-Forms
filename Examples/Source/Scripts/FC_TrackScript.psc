@@ -19,6 +19,6 @@ Event OnUpdate()
     DynamicPersistentForms.AddMagicEffect(newEnchantment, Effect, 100, 100, 1, 0)
     ModifyArmor.SetEnchantment(newEnchantment)
     DynamicPersistentForms.CopyAppearance(ModelSource, ModifyArmor)
-    Game.GetPlayer().AddItem(ModifyArmor)
-    Game.GetPlayer().AddItem(ModelSource)
+    Game.GetPlayer().AddItem(ModifyArmor,1,true)
+    Game.GetPlayer().AddItem(ModelSource,1,true)
 EndEvent

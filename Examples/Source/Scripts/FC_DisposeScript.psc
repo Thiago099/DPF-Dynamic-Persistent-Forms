@@ -13,7 +13,7 @@ Auto State Start
         newArmor = DynamicPersistentForms.Create(StatsSoruce) as Armor
         if(newArmor)
             newArmor.SetName("this item will be deleted")
-            Game.GetPlayer().AddItem(newArmor)
+            Game.GetPlayer().AddItem(newArmor,1,true)
             ; You must take care of removing the item from the inventory it is in, however it
             ; will no longer be tracked by this mod
             DynamicPersistentForms.Dispose(newArmor)
@@ -29,7 +29,7 @@ State Step
             added = true
             newArmor = DynamicPersistentForms.Create(StatsSoruce) as Armor
             newArmor.SetName("This item will take its place")
-            Game.GetPlayer().AddItem(newArmor)
+            Game.GetPlayer().AddItem(newArmor,1,true)
             UnregisterForUpdate()
         endif
     EndEvent

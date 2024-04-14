@@ -28,6 +28,6 @@ Event OnUpdate()
         DynamicPersistentForms.SetEnchantmentCostOverride(newEnchantment, 3)
         ; DynamicPersistentForms.SetEnchantmentAutoCalculate(newEnchantment, true); Set to true to disable override
         DynamicPersistentForms.CopyAppearance(ModelSource, newWeapon)
-        Game.GetPlayer().AddItem(newWeapon)
+        Game.GetPlayer().AddItem(newWeapon,1,true)
     endif
 EndEvent

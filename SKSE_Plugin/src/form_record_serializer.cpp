@@ -44,7 +44,7 @@ bool RestoreAllFormRecords(Serializer<T>* serializer) {
     printSize("number of items", sizeData);
 
     for (uint32_t i = 0; i < sizeData; i++) {
-        print("form data", i);
+        printInt("form data", i);
         if (RestoreFormRecord(serializer, i, false)) {
             formRecordCreated = true;
         }
@@ -52,14 +52,14 @@ bool RestoreAllFormRecords(Serializer<T>* serializer) {
     print("reading form data");
 
     for (uint32_t i = 0; i < sizeData; ++i) {
-        print("form data", i);
+        printInt("form data", i);
         auto instance = formData[i];
         RestoreFormRecordData(serializer, instance);
     }
 
     printSize("number of items", sizeRef);
     for (uint32_t i = 0; i < sizeRef; i++) {
-        print("form data", i);
+        printInt("form data", i);
         if (RestoreFormRecord(serializer, i, true)) {
             formRecordCreated = true;
         }
@@ -67,7 +67,7 @@ bool RestoreAllFormRecords(Serializer<T>* serializer) {
     print("reading form data");
 
     for (uint32_t i = 0; i < sizeRef; ++i) {
-        print("form data", i);
+        printInt("form data", i);
         auto instance = formRef[i];
         RestoreFormRecordData(serializer, instance);
     }
@@ -130,8 +130,8 @@ static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i, bool refere
                 instance = formRef[i];
                 instance->deleted = true;
             } else {
-                auto instance = FormRecord::CreateDeleted(formId);
-                AddFormRef(instance);
+                auto deletedInstance = FormRecord::CreateDeleted(formId);
+                AddFormRef(deletedInstance);
             }
         } 
         else
@@ -140,8 +140,8 @@ static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i, bool refere
                 instance = formData[i];
                 instance->deleted = true;
             } else {
-                auto instance = FormRecord::CreateDeleted(formId);
-                AddFormData(instance);
+                auto deletedInstance = FormRecord::CreateDeleted(formId);
+                AddFormData(deletedInstance);
             }
         }
         return false;

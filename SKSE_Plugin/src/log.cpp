@@ -68,7 +68,7 @@ void printSize(const char* message, const size_t number) {
         RE::ConsoleLog::GetSingleton()->Print(msg);
     }
 }
-void printInt(const char* message, const int32_t number) {
+void printInt(const char* message, const uint32_t number) {
     if (DoLog) {
         auto msg = std::format("{0}: {1}", message, number).c_str();
         FileLogger::GetSingleton()->Print(msg);

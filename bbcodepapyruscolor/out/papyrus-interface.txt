@@ -1,7 +1,7 @@
 [b][size=5][center]DynamicPersistentForms[/center][/size][/b][spoiler][color=#33BAB1]scriptName[/color] DynamicPersistentForms [color=#3E9CCA]hidden[/color]
 
 [color=#6A9955]; Creates a new form that is a copy of given base form, changes to that form will be persisted in the save game.[/color]
-Form [color=#C486C1]function[/color] [color=#DDDDAA]Craete[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+Form [color=#C486C1]function[/color] [color=#DDDDAA]Create[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
 [color=#6A9955]; Dispose a form that was created using the previous function.[/color]
 [color=#C486C1]function[/color] [color=#DDDDAA]Dispose[color=#FEB519]([/color][/color]Form item[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color] 
 
@@ -30,7 +30,7 @@ Form [color=#C486C1]function[/color] [color=#DDDDAA]Craete[color=#FEB519]([/colo
 [color=#C486C1]function[/color] [color=#DDDDAA]SetEnchantmentAutoCalculate[color=#FEB519]([/color][/color]Enchantment enchantment, bool value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
 [color=#C486C1]function[/color] [color=#DDDDAA]SetEnchantmentChargeOverride[color=#FEB519]([/color][/color]Enchantment enchantment, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
 [color=#C486C1]function[/color] [color=#DDDDAA]SetEnchantmentCostOverride[color=#FEB519]([/color][/color]Enchantment enchantment, int value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
-[color=#C486C1]function[/color] [color=#DDDDAA]SeEnchantmentChargeTime[color=#FEB519]([/color][/color]Enchantment enchantment, float value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
+[color=#C486C1]function[/color] [color=#DDDDAA]SetEnchantmentChargeTime[color=#FEB519]([/color][/color]Enchantment enchantment, float value[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
 
 
 [color=#C486C1]function[/color] [color=#DDDDAA]SetAmmoDamage[color=#FEB519]([/color][/color]Ammo ammo, float damage[color=#FEB519])[/color] [color=#3E9CCA]global[/color] [color=#3E9CCA]native[/color]
