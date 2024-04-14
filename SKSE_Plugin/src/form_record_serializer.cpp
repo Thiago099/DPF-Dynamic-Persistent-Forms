@@ -172,6 +172,12 @@ static bool RestoreModifiedItem(Serializer<T>* serializer, FormRecord* instance)
     serializer->finishReadingSection();
 
     if (!actualForm) {
+        if (!instance) {
+            instance = FormRecord::CreateDeleted(0);
+            AddFormRef(instance);
+        } else {
+            instance->deleted = true;
+        }
         print("missing actual form");
         return false;
     }
@@ -206,6 +212,12 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
 
     if (!baseForm) {
         print("Missing base form");
+        if (!instance) {
+            instance = FormRecord::CreateDeleted(id);
+            AddFormData(instance);
+        } else {
+            instance->deleted = true;
+        }
         return false;
     }
 

@@ -205,36 +205,38 @@ public:
     }
     void Deserialize(Serializer<T>* serializer, RE::TESForm* form) override {
         auto potion = form->As<RE::MagicItem>();
-        potion->effects.clear();
-        size_t numEffects = serializer->Read<uint32_t>();
+        if (potion) {
+            potion->effects.clear();
+            size_t numEffects = serializer->Read<uint32_t>();
 
-        for (size_t i = 0; i < numEffects; i++) {
-            auto effectForm = serializer->ReadFormRef<RE::EffectSetting>();
-            auto magnitude = serializer->Read<float>();
-            auto area = serializer->Read<uint32_t>();
-            auto duration = serializer->Read<uint32_t>();
-            auto cost = serializer->Read<float>();
+            for (size_t i = 0; i < numEffects; i++) {
+                auto effectForm = serializer->ReadFormRef<RE::EffectSetting>();
+                auto magnitude = serializer->Read<float>();
+                auto area = serializer->Read<uint32_t>();
+                auto duration = serializer->Read<uint32_t>();
+                auto cost = serializer->Read<float>();
 
-            if (effectForm) {
-                bool found = false;
-                for (auto effect : potion->effects) {
-                    if (effect->baseEffect && effect->baseEffect->GetFormID() == effectForm->GetFormID()) {
-                        effect->effectItem.magnitude = magnitude;
-                        effect->effectItem.area = area;
-                        effect->effectItem.duration = duration;
-                        effect->cost = cost;
-                        found = true;
-                        break;
+                if (effectForm) {
+                    bool found = false;
+                    for (auto effect : potion->effects) {
+                        if (effect->baseEffect && effect->baseEffect->GetFormID() == effectForm->GetFormID()) {
+                            effect->effectItem.magnitude = magnitude;
+                            effect->effectItem.area = area;
+                            effect->effectItem.duration = duration;
+                            effect->cost = cost;
+                            found = true;
+                            break;
+                        }
                     }
-                }
-                if (!found) {
-                    auto newEffect = new RE::Effect();
-                    newEffect->baseEffect = effectForm;
-                    newEffect->effectItem.magnitude = magnitude;
-                    newEffect->effectItem.area = area;
-                    newEffect->effectItem.duration = duration;
-                    newEffect->cost = cost;
-                    potion->effects.push_back(newEffect);
+                    if (!found) {
+                        auto newEffect = new RE::Effect();
+                        newEffect->baseEffect = effectForm;
+                        newEffect->effectItem.magnitude = magnitude;
+                        newEffect->effectItem.area = area;
+                        newEffect->effectItem.duration = duration;
+                        newEffect->cost = cost;
+                        potion->effects.push_back(newEffect);
+                    }
                 }
             }
         }
@@ -444,6 +446,8 @@ void StoreEachFormData(Serializer<T>* serializer, FormRecord* elem) {
 
     GetFilters();
 
+    serializer->Write<uint32_t>(static_cast<uint32_t>(filters.size()));
+
     for (auto& filter : filters) {
         serializer->StartWritingSection();
         if (elem->actualForm && filter->Condition(elem->actualForm)) {
@@ -466,13 +470,19 @@ void RestoreEachFormData(Serializer<T>* serializer, FormRecord* elem) {
 
      GetFilters();
 
+     auto size = serializer->Read<uint32_t>();
+     uint32_t i = 0;
 
      for (auto& filter : filters) {
+         if (i >= size) {
+             break;
+         }
          serializer->startReadingSection();
          auto kind = serializer->Read<char>();
          if (kind == 1 && elem->actualForm) {
             filter->Deserialize(serializer, elem->actualForm);
          }
          serializer->finishReadingSection();
+         ++i;
      }
  }
