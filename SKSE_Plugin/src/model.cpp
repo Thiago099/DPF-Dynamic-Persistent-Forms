@@ -2,6 +2,8 @@
 #include <unordered_set>
 std::vector<FormRecord*> formData;
 std::vector<FormRecord*> formRef;
+
+bool espFound = false;
 uint32_t lastFormId = 0;  // last mod
 uint32_t firstFormId = 0;  // last mod
 
@@ -62,6 +64,10 @@ void ReadFirstFormIdFromESP() {
     const auto dataHandler = RE::TESDataHandler::GetSingleton();
 
     auto id = dataHandler->LookupFormID(0x800, "Dynamic Persistent Forms.esp");
+
+    if (id != 0) {
+        espFound = true;
+    }
 
     firstFormId = id + 1;
 

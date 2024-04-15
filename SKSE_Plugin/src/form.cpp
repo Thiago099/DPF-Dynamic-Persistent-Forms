@@ -14,6 +14,11 @@ static void applyPattern(FormRecord* instance);
 
 
 RE::TESForm* AddForm(RE::TESForm* baseItem) {
+
+    if (!espFound) {
+        return nullptr;
+    }
+
     RE::TESForm* result = nullptr;
     EachFormData([&](FormRecord* item) {
         if (item->deleted) {
@@ -28,12 +33,11 @@ RE::TESForm* AddForm(RE::TESForm* baseItem) {
         }
         return true;
     });
+
     if (result) {
         return result;
     }
-    if (lastFormId == 0) {
-        return nullptr;
-    }
+
     print("item created");
     auto factory = RE::IFormFactory::GetFormFactoryByType(baseItem->GetFormType());
     auto newForm = factory->Create();
