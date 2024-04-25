@@ -15,7 +15,6 @@ static void SaveCallback(SKSE::SerializationInterface* a_intfc) {
     std::lock_guard<std::mutex> lock(callbackMutext);
     try {
         print("SAVE CAllBACK");
-
         if (!a_intfc->OpenRecord('ARR_', 1)) {
             print("Failed to open record for arr!");
         } else {
@@ -64,7 +63,6 @@ static void LoadCallback(SKSE::SerializationInterface* a_intfc) {
 }
 void SaveCache() {
     print("save cache");
-
 
     auto fileWriter = new FileWriter("DynamicPersistentFormsCache.bin", std::ios::out | std::ios::binary | std::ios::trunc);
 

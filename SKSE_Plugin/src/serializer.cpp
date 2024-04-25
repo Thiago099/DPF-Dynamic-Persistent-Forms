@@ -146,7 +146,7 @@ public:
     }
     template<class T>
     T* ReadFormRef() {
-        auto item = Read<uint32_t>();
+        auto item = ReadFormId();
         if (item == 0) {
             return nullptr;
         }
@@ -158,7 +158,7 @@ public:
     }
 
     RE::TESForm* ReadFormRef() {
-        auto item = Read<uint32_t>();
+        auto item = ReadFormId();
         if (item == 0) {
             return nullptr;
         }
@@ -166,11 +166,91 @@ public:
     }
 
     void WriteFormRef(RE::TESForm* item) {
-        if (!item) {
-            Write<uint32_t>(0);
+        if (item) {
+            WriteFormId(item->GetFormID());
         } else {
-            Write<uint32_t>(item->GetFormID());
+            WriteFormId(0);
         }
+    }
+
+    RE::FormID ReadFormId() {
+        const auto dataHandler = RE::TESDataHandler::GetSingleton();
+        char fileRef = Read<char>();
+        print("fileref", fileRef);
+
+        if (fileRef == 0) {
+            return 0;
+        }
+
+        if (fileRef == 1) {
+            uint32_t dynamicId = Read<uint32_t>();
+            return dynamicId + (dynamicModId << 24);
+        }
+        else if(fileRef == 2){
+            std::string fileName = ReadString();
+            uint32_t localId = Read<uint32_t>();
+            auto formId = dataHandler->LookupFormID(localId, fileName);
+            print("localid", formId);
+            print("modname", fileName);
+            print("id", formId);
+            return formId;
+        }
+
+        return 0;
+
+
+    }
+
+    void WriteFormId(RE::FormID formId) {
+        printInt("formid", formId);
+        if (formId == 0) {
+            print("zero");
+            Write<char>(0); 
+            return;
+        }
+
+        const auto dataHandler = RE::TESDataHandler::GetSingleton();
+
+        auto modId = (formId >> 24) & 0xff;
+
+        print("mid", modId);
+        if (modId == dynamicModId) {
+            print("dynamic");
+            auto localId = formId & 0xFFFFFF;
+            Write<char>(1);
+            Write<uint32_t>(localId);
+        }
+        else if (modId == 0xfe) {
+            print("light");
+            auto lightId = (formId >> 12) & 0xFFF;
+            auto file = dataHandler->LookupLoadedLightModByIndex(lightId);
+            if (file) {
+                auto localId = formId & 0xFFF;
+                std::string fileName = file->fileName;
+                Write<char>(2);
+                WriteString(fileName.c_str());
+                Write<uint32_t>(localId);
+            } else {
+                Write<char>(0);
+                print("missing file");
+            }
+        } 
+        else {
+            print("regular");
+            auto file = dataHandler->LookupLoadedModByIndex(modId);
+            if (file) {
+                auto localId = formId & 0xFFFFFF;
+                std::string fileName = file->fileName;
+                Write<char>(2);
+                WriteString(fileName.c_str());
+                Write<uint32_t>(localId);
+            } else {
+                Write<char>(0);
+                print("missing file");
+            }
+        }
+
+
     }
 
     char* ReadString() {

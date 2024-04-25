@@ -88,16 +88,18 @@ static void StoreFormRecord(Serializer<T>* serializer, FormRecord* instance, boo
 
     if (!instance->deleted) {
         if (reference) {
+            print("changed");
             serializer->WriteFormRef(instance->actualForm);
             serializer->WriteFormRef(instance->modelForm);
-
         } else {
+            print("created");
             serializer->WriteFormRef(instance->baseForm);
             serializer->WriteFormRef(instance->modelForm);
-            serializer->Write<uint32_t>(instance->formId);
+            serializer->WriteFormId(instance->formId);
         }
     } else {
-        serializer->Write<uint32_t>(instance->formId);
+        print("deleted");
+        serializer->WriteFormId(instance->formId);
     }
 
     serializer->finishWritingSection();
@@ -123,7 +125,7 @@ static bool RestoreFormRecord(Serializer<T>* serializer, uint32_t i, bool refere
     auto deleted = serializer->Read<char>();
 
     if (deleted == 1) {
-        auto formId = serializer->Read<uint32_t>();
+        auto formId = serializer->ReadFormId();
         serializer->finishReadingSection();
         if (reference) {
             if (i < formRef.size()) {
@@ -207,7 +209,7 @@ static bool RestoreCreatedItem(Serializer<T>* serializer, FormRecord* instance) 
     bool createdRecord = false;
     auto baseForm = serializer->ReadFormRef();
     auto modelForm = serializer->ReadFormRef();
-    auto id = serializer->Read<uint32_t>();
+    auto id = serializer->ReadFormId();
     serializer->finishReadingSection();
 
     if (!baseForm) {
