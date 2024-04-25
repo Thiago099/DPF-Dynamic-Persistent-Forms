@@ -48,30 +48,37 @@ void EnableLog(std::string filename, std::string message) {
     DoLog = true;
 }
 
-void print(const char* message) {
+void print(const std::string message) {
     if (DoLog) {
         FileLogger::GetSingleton()->Print(message);
-        RE::ConsoleLog::GetSingleton()->Print(message);
+        //RE::ConsoleLog::GetSingleton()->Print(message);
     }
 }
-void print(const char* message, const float number) {
+void print(const std::string message1, const std::string message2) {
     if (DoLog) {
-        auto msg = std::format("{0}: {1}", message, number).c_str();
+        auto msg = std::format("{0}: {1}", message1, message2);
         FileLogger::GetSingleton()->Print(msg);
-        RE::ConsoleLog::GetSingleton()->Print(msg);
+         RE::ConsoleLog::GetSingleton()->Print(msg.c_str());
     }
 }
-void printSize(const char* message, const size_t number) {
+void print(const std::string message, const float number) {
     if (DoLog) {
-        auto msg = std::format("{0}: {1}", message, number).c_str();
+        auto msg = std::format("{0}: {1}", message, number);
         FileLogger::GetSingleton()->Print(msg);
-        RE::ConsoleLog::GetSingleton()->Print(msg);
+        RE::ConsoleLog::GetSingleton()->Print(msg.c_str());
     }
 }
-void printInt(const char* message, const uint32_t number) {
+void printSize(const std::string message, const size_t number) {
     if (DoLog) {
-        auto msg = std::format("{0}: {1}", message, number).c_str();
+        auto msg = std::format("{0}: {1}", message, number);
         FileLogger::GetSingleton()->Print(msg);
-        RE::ConsoleLog::GetSingleton()->Print(msg);
+        RE::ConsoleLog::GetSingleton()->Print(msg.c_str());
+    }
+}
+void printInt(const std::string message, const uint32_t number) {
+    if (DoLog) {
+        auto msg = std::format("{0}: {1}", message, number);
+        FileLogger::GetSingleton()->Print(msg);
+        RE::ConsoleLog::GetSingleton()->Print(msg.c_str());
     }
 }

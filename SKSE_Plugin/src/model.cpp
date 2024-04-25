@@ -6,6 +6,7 @@ std::vector<FormRecord*> formRef;
 bool espFound = false;
 uint32_t lastFormId = 0;  // last mod
 uint32_t firstFormId = 0;  // last mod
+uint32_t dynamicModId = 0;
 
 
 void AddFormData(FormRecord* item) {
@@ -70,6 +71,6 @@ void ReadFirstFormIdFromESP() {
     }
 
     firstFormId = id + 1;
-
     lastFormId = firstFormId;
+    dynamicModId = (firstFormId >> 24) & 0xff;
 }
